@@ -3,173 +3,863 @@
     "tasks": [
       {
         "id": 1,
-        "title": "Setup Next.js Project with TypeScript and Core Dependencies",
-        "description": "Initialize a new Next.js project with TypeScript, configure essential dependencies, and setup development environment",
-        "status": "pending",
-        "dependencies": [],
+        "title": "Setup Next.js Project with Dependencies",
+        "description": "Initialize Next.js project with required dependencies including Tailwind CSS, shadcn/ui, Zustand, Framer Motion, and other specified libraries",
+        "details": "Create new Next.js project using latest version, install pnpm as package manager, configure Tailwind CSS with custom glassmorphism utilities, add shadcn/ui components, install Zustand for state management, Framer Motion for animations, React Hook Form, Zod v4, date-fns, and Fuse.js. Setup TypeScript configuration and ESLint rules.",
+        "testStrategy": "Verify all dependencies install correctly, Next.js dev server runs without errors, and TypeScript compilation succeeds",
         "priority": "high",
-        "details": "Create Next.js latest project using `npx create-next-app@latest simple-do --typescript --tailwind --eslint --app`. Install core dependencies with latest versions: zustand for state management, @tanstack/react-query for server state, framer-motion for animations, tailwindcss, @radix-ui/react-* components from shadcn/ui, zod for validation, date-fns for date handling, fuse.js for search, sonner for notifications, react-hook-form for forms. Configure TypeScript strict mode, ESLint with Next.js rules, and Prettier. Setup package.json scripts for dev, build, lint, and type checking.",
-        "testStrategy": "Verify project builds successfully with `npm run build`, TypeScript compiles without errors with `npm run type-check`, and all dependencies install correctly. Test development server starts on localhost:3000.",
-        "subtasks": []
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Initialize Next.js Project and Setup Package Manager",
+            "description": "Create new Next.js project using latest version and configure pnpm as package manager",
+            "dependencies": [],
+            "details": "Run 'npx create-next-app@latest' to initialize project with TypeScript and ESLint. Install pnpm globally and configure project to use pnpm as package manager. Verify project structure and initial setup is working correctly.",
+            "status": "pending",
+            "testStrategy": "Verify Next.js project creates successfully, pnpm is configured as package manager, and dev server starts without errors"
+          },
+          {
+            "id": 2,
+            "title": "Install and Configure Core Dependencies",
+            "description": "Install Tailwind CSS, shadcn/ui, Zustand, Framer Motion and other required libraries",
+            "dependencies": ["1.1"],
+            "details": "Install Tailwind CSS with PostCSS configuration, add shadcn/ui components system, install Zustand for state management, Framer Motion for animations, React Hook Form, Zod v4, date-fns, and Fuse.js using pnpm. Verify all packages install without conflicts.",
+            "status": "pending",
+            "testStrategy": "Confirm all dependencies are listed in package.json with correct versions and no installation errors occur"
+          },
+          {
+            "id": 3,
+            "title": "Configure Tailwind CSS with Custom Utilities",
+            "description": "Setup Tailwind CSS configuration with custom glassmorphism utilities and design tokens",
+            "dependencies": ["1.2"],
+            "details": "Configure tailwind.config.js with custom glassmorphism utilities including backdrop-blur effects, transparency values, and glass card styles. Add custom color palette and spacing values. Setup CSS custom properties for consistent theming.",
+            "status": "pending",
+            "testStrategy": "Test glassmorphism utilities render correctly in browser and custom styles are applied properly"
+          },
+          {
+            "id": 4,
+            "title": "Setup shadcn/ui Component System",
+            "description": "Initialize shadcn/ui and configure base components for the project",
+            "dependencies": ["1.3"],
+            "details": "Run shadcn/ui init command to setup components.json configuration. Install essential base components like Button, Input, Card, and Dialog. Configure component styling to work with glassmorphism theme and ensure proper TypeScript integration.",
+            "status": "pending",
+            "testStrategy": "Verify shadcn/ui components render correctly with glassmorphism styling and TypeScript types are properly resolved"
+          },
+          {
+            "id": 5,
+            "title": "Configure TypeScript and ESLint Rules",
+            "description": "Setup TypeScript configuration and ESLint rules for code quality and consistency",
+            "dependencies": ["1.1"],
+            "details": "Configure tsconfig.json with strict type checking, path aliases, and modern ES features. Setup ESLint with Next.js recommended rules, Prettier integration, and custom rules for code consistency. Configure VS Code settings for optimal development experience.",
+            "status": "pending",
+            "testStrategy": "Verify TypeScript compilation succeeds without errors, ESLint rules enforce code quality, and all tooling integrates properly"
+          }
+        ]
       },
       {
         "id": 2,
-        "title": "Configure Tailwind CSS with Glassmorphism Design System",
-        "description": "Setup custom Tailwind configuration with glassmorphism utilities, color palette, and design tokens",
-        "details": "Extend tailwind.config.js with custom colors: primary '#FF6B35', secondary '#1A1A2E', accent '#0F3460', glass backgrounds with rgba values. Add custom utilities for glassmorphism effects using backdrop-filter, CSS variables for consistent blur values (4px, 8px, 12px), border-radius tokens (16px standard), and gradient backgrounds. Install @tailwindcss/forms plugin. Create design system tokens file with spacing scale, shadow definitions, and animation durations. Setup CSS custom properties for dynamic theming.",
-        "testStrategy": "Verify Tailwind builds correctly, custom utilities are available in browser dev tools, glassmorphism effects render properly with backdrop-filter support, and color palette matches design specifications.",
+        "title": "Create Glassmorphism Design System",
+        "description": "Implement custom Tailwind CSS utilities and component styles for glassmorphism effects as specified in the PRD",
+        "details": "Create custom CSS classes for glass-card effects with backdrop-filter blur, rgba backgrounds, border-radius 20px, and inset shadows. Implement the exact CSS provided in PRD including ::before and ::after pseudo-elements for glass highlights. Setup color palette variables (#FF6B35, #1A1A2E, #0F3460) and gradient backgrounds. Create responsive utilities for mobile/desktop glassmorphism.",
+        "testStrategy": "Visual testing of glass effects in different browsers, verify backdrop-filter support, test performance on mobile devices",
         "priority": "high",
         "dependencies": [1],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Setup Tailwind CSS Color Palette Variables",
+            "description": "Configure Tailwind CSS with custom color variables for the glassmorphism design system including primary (#FF6B35), secondary (#1A1A2E), accent (#0F3460), and glass colors",
+            "dependencies": [],
+            "details": "Create or update tailwind.config.js with custom color palette. Add CSS custom properties for glass effects including rgba values for transparency. Setup gradient background variables for animated background (1a1a2e to 16213e). Configure color tokens that will be used across all glass components.",
+            "status": "pending",
+            "testStrategy": "Verify color variables are properly accessible in CSS classes, test color consistency across different browsers, validate contrast ratios meet accessibility standards"
+          },
+          {
+            "id": 2,
+            "title": "Create Core Glass Card CSS Classes",
+            "description": "Implement the main .glass-card CSS class with backdrop-filter blur effects, rgba backgrounds, border-radius 20px, and inset shadows as specified in PRD",
+            "dependencies": ["2.1"],
+            "details": "Create custom CSS class matching the exact specifications: 240px×360px dimensions, rgba(255,255,255,0.4) background, backdrop-filter blur(10px), 20px border-radius, complex box-shadow with multiple inset shadows. Include webkit prefixes for Safari compatibility.",
+            "status": "pending",
+            "testStrategy": "Test backdrop-filter support across browsers (Chrome, Firefox, Safari, Edge), verify glass effect visual appearance, validate performance impact on mobile devices"
+          },
+          {
+            "id": 3,
+            "title": "Implement Glass Card Pseudo-elements",
+            "description": "Add ::before and ::after pseudo-elements to create the glass highlight effects with gradient backgrounds",
+            "dependencies": ["2.2"],
+            "details": "Implement ::before pseudo-element for top horizontal highlight with linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent). Add ::after pseudo-element for left vertical highlight with linear-gradient(180deg, rgba(255,255,255,0.8), transparent, rgba(255,255,255,0.3)). Position absolutely within glass-card container.",
+            "status": "pending",
+            "testStrategy": "Verify pseudo-elements render correctly in all browsers, test gradient transitions are smooth, validate positioning doesn't break with content overflow"
+          },
+          {
+            "id": 4,
+            "title": "Create Responsive Glassmorphism Utilities",
+            "description": "Build responsive utility classes for mobile and desktop glassmorphism variations with performance optimizations",
+            "dependencies": ["2.2", "2.3"],
+            "details": "Create mobile-optimized glass utilities with reduced blur effects for better performance on 320-768px screens. Implement desktop variants with full glassmorphism effects for 1024px+ screens. Add Tailwind responsive prefixes and create component variants for different glass card sizes and use cases.",
+            "status": "pending",
+            "testStrategy": "Test performance on low-end mobile devices, verify responsive breakpoints work correctly, validate smooth transitions between mobile and desktop variants"
+          },
+          {
+            "id": 5,
+            "title": "Setup Glassmorphism Component Library",
+            "description": "Create reusable Tailwind utility classes and component base styles for consistent glassmorphism application across the app",
+            "dependencies": ["2.2", "2.3", "2.4"],
+            "details": "Build comprehensive utility class library including glass-card, glass-button, glass-input, glass-modal variants. Create base component styles for common UI elements like task cards, navigation elements, and modal overlays. Document class usage patterns and establish design system guidelines for consistent implementation.",
+            "status": "pending",
+            "testStrategy": "Validate all utility classes work together without conflicts, test component combinations in various layouts, verify design consistency across different use cases"
+          }
+        ]
       },
       {
         "id": 3,
-        "title": "Setup Zustand Store with Task and Category State Management",
-        "description": "Create global state management for tasks, categories, and app preferences using Zustand",
-        "details": "Create stores/taskStore.ts with Zustand store containing: tasks array with Task interface (id, title, description, completed, dueDate, categoryId, createdAt, backgroundColor), categories array with Category interface (id, name, color, createdAt), and actions (addTask, updateTask, deleteTask, toggleTask, addCategory, updateCategory, deleteCategory). Implement localStorage persistence middleware using zustand/middleware. Create stores/appStore.ts for UI state (theme, search query, active filters). Use immer middleware for immutable updates. Add TypeScript interfaces and proper type safety.",
-        "testStrategy": "Test state persistence across page refreshes, verify all CRUD operations work correctly, ensure TypeScript types are properly inferred, and validate localStorage integration functions properly.",
+        "title": "Setup State Management with Zustand",
+        "description": "Create global state store using Zustand for tasks, categories, and application settings",
+        "details": "Create Zustand store with slices for: tasks (CRUD operations), categories (predefined and custom), user preferences (theme, view settings), and search state. Implement local storage persistence middleware. Define TypeScript interfaces for Task, Category, and AppState. Setup actions for task creation, completion, deletion, and reordering.",
+        "testStrategy": "Unit tests for store actions, verify state persistence across browser sessions, test concurrent state updates",
         "priority": "high",
         "dependencies": [1],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define TypeScript interfaces and types",
+            "description": "Create comprehensive TypeScript interfaces for Task, Category, AppState, and related types used throughout the Zustand store",
+            "dependencies": [],
+            "details": "Define Task interface with id, title, description, completed, priority, dueDate, categoryId, createdAt, updatedAt fields. Create Category interface with id, name, color, isCustom properties. Define AppState interface encompassing tasks, categories, user preferences (theme, view settings), and search state. Include utility types for task filters, sorting options, and store actions.",
+            "status": "pending",
+            "testStrategy": "Validate TypeScript compilation, verify interface completeness covers all use cases, test type safety with mock data"
+          },
+          {
+            "id": 2,
+            "title": "Setup Zustand store structure with slices",
+            "description": "Create the main Zustand store with separate slices for tasks, categories, user preferences, and search functionality",
+            "dependencies": ["3.1"],
+            "details": "Initialize Zustand store using createWithEqualityFn for performance. Create separate slices: taskSlice for CRUD operations, categorySlice for predefined and custom categories, preferencesSlice for theme and view settings, searchSlice for search state. Combine slices using Zustand's slice pattern with proper TypeScript typing.",
+            "status": "pending",
+            "testStrategy": "Unit tests for store initialization, verify slice isolation, test store state structure matches TypeScript interfaces"
+          },
+          {
+            "id": 3,
+            "title": "Implement task CRUD operations and actions",
+            "description": "Create all task-related actions including creation, completion, deletion, reordering, and update operations",
+            "dependencies": ["3.2"],
+            "details": "Implement addTask action with validation and ID generation. Create updateTask for editing existing tasks. Add toggleTaskCompletion for marking done/undone. Implement deleteTask with confirmation. Create reorderTasks action for drag-and-drop functionality. Include bulk operations for multiple task management.",
+            "status": "pending",
+            "testStrategy": "Unit tests for each CRUD operation, verify state mutations are immutable, test edge cases like duplicate IDs and invalid operations"
+          },
+          {
+            "id": 4,
+            "title": "Setup local storage persistence middleware",
+            "description": "Implement Zustand persistence middleware to save and restore state from localStorage across browser sessions",
+            "dependencies": ["3.3"],
+            "details": "Configure Zustand persist middleware with localStorage adapter. Define which parts of state to persist (exclude search state, include tasks/categories/preferences). Implement state migration for schema changes. Add error handling for localStorage failures and quota exceeded scenarios. Configure debounced saves to prevent excessive writes.",
+            "status": "pending",
+            "testStrategy": "Test state persistence across browser sessions, verify migration handles schema changes, validate error handling for storage failures"
+          },
+          {
+            "id": 5,
+            "title": "Create category management and user preferences actions",
+            "description": "Implement actions for managing categories (predefined and custom) and user preference settings",
+            "dependencies": ["3.2"],
+            "details": "Create predefined categories (Work, Personal, Health, etc.) with default colors. Implement addCustomCategory, updateCategory, deleteCategory actions. Create preference actions for theme switching (light/dark), view settings (list/grid), and other UI preferences. Include validation for category names and color values.",
+            "status": "pending",
+            "testStrategy": "Test category CRUD operations, verify predefined categories are properly initialized, validate preference persistence and theme switching"
+          }
+        ]
       },
       {
         "id": 4,
-        "title": "Create Reusable UI Components with Glassmorphism Styling",
-        "description": "Build foundational UI components using shadcn/ui with custom glassmorphism styling",
-        "details": "Install shadcn/ui CLI and initialize components: `npx shadcn-ui@latest init`. Add components: Button, Input, Card, Dialog, Dropdown, Checkbox, Calendar, Badge. Customize components/ui/ files with glassmorphism styling using Tailwind utilities: backdrop-blur-md, bg-white/10, border border-white/20, shadow-lg. Create GlassCard component with consistent styling, GlassButton with hover effects, and GlassInput with focus states. Implement consistent 16px border radius, subtle animations using transition-all duration-200, and proper contrast ratios for accessibility.",
-        "testStrategy": "Verify all components render with proper glassmorphism effects, test accessibility with screen readers, ensure hover and focus states work correctly, and validate responsive behavior across different screen sizes.",
+        "title": "Create Base Layout and Navigation",
+        "description": "Implement responsive navigation structure with header, main navigation tabs, and footer as specified in the PRD",
+        "details": "Create main layout component with glassmorphism header containing app logo, search icon, and settings. Implement tab navigation (Today, Lists, Completed, Settings) with mobile bottom bar and desktop sidebar. Add responsive behavior for 320-768px (mobile) and 1024px+ (desktop). Include floating action button for quick task creation.",
+        "testStrategy": "Test responsive breakpoints, verify navigation accessibility, validate mobile touch targets meet 44px minimum",
         "priority": "high",
-        "dependencies": [2],
+        "dependencies": [2, 3],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Base Layout Container Component",
+            "description": "Build the main layout wrapper component with proper structure for header, navigation, content area, and footer",
+            "dependencies": [],
+            "details": "Create a BaseLayout component that serves as the root layout wrapper. Include slots/sections for header, main navigation, content area, and footer. Implement proper semantic HTML structure with main, nav, and header elements. Add CSS Grid or Flexbox layout structure to accommodate responsive design requirements.",
+            "status": "pending",
+            "testStrategy": "Test layout structure renders correctly, verify semantic HTML elements, validate proper spacing and alignment"
+          },
+          {
+            "id": 2,
+            "title": "Implement Glassmorphism Header with Logo and Actions",
+            "description": "Create the top header bar with glassmorphism styling containing app logo, search icon, and settings button",
+            "dependencies": ["4.1"],
+            "details": "Build header component with glassmorphism glass-card styling from design system. Include app logo/title on left side, search icon and settings button on right side. Apply backdrop-filter blur effects, proper spacing, and mobile-responsive behavior. Ensure header stays fixed at top during scroll.",
+            "status": "pending",
+            "testStrategy": "Test glassmorphism effects render properly, verify responsive behavior on mobile/desktop, validate icon accessibility and touch targets"
+          },
+          {
+            "id": 3,
+            "title": "Build Responsive Tab Navigation System",
+            "description": "Create tab navigation for Today, Lists, Completed, and Settings with mobile bottom bar and desktop sidebar layouts",
+            "dependencies": ["4.1"],
+            "details": "Implement navigation component that switches between mobile bottom tab bar (320-768px) and desktop sidebar (1024px+). Include navigation items for Today, Lists, Completed, and Settings with active state indicators. Use glassmorphism styling and ensure proper touch target sizes (44px minimum) for mobile.",
+            "status": "pending",
+            "testStrategy": "Test responsive breakpoint transitions, verify active state indicators, validate touch target sizes meet accessibility requirements"
+          },
+          {
+            "id": 4,
+            "title": "Create Floating Action Button Component",
+            "description": "Build floating action button for quick task creation with glassmorphism styling and proper positioning",
+            "dependencies": ["4.1"],
+            "details": "Create FAB component with glassmorphism glass-card styling positioned as overlay. Include proper z-index layering, smooth hover/active states, and responsive positioning. Position button in bottom-right corner with appropriate margins from screen edges. Add accessibility attributes and keyboard navigation support.",
+            "status": "pending",
+            "testStrategy": "Test button positioning across screen sizes, verify glassmorphism effects, validate accessibility and keyboard navigation"
+          },
+          {
+            "id": 5,
+            "title": "Implement Navigation State Management and Routing",
+            "description": "Set up navigation state management and routing integration for seamless page transitions",
+            "dependencies": ["4.2", "4.3"],
+            "details": "Implement navigation state management using Zustand or React state. Integrate with Next.js routing for page navigation. Handle active tab state synchronization with current route. Add smooth transitions between navigation states and ensure proper URL updates when navigating between sections.",
+            "status": "pending",
+            "testStrategy": "Test navigation state persistence, verify route synchronization, validate smooth transitions between pages"
+          }
+        ]
       },
       {
         "id": 5,
-        "title": "Implement Quick Task Creation with Auto-save",
-        "description": "Build the quick task creation interface with floating action button and auto-save functionality",
-        "details": "Create QuickTaskInput component with floating '+' button that expands into glassmorphism modal. Use react-hook-form with zod validation for task input. Implement auto-save with 500ms debounce using useEffect and setTimeout. Add smart date parsing using date-fns for phrases like 'tomorrow', 'next friday'. Include category selection dropdown and background color picker (10 predefined colors). Add keyboard shortcuts: Cmd/Ctrl+Enter to save, Escape to close. Use Framer Motion for smooth expand/collapse animations and satisfying micro-interactions.",
-        "testStrategy": "Test auto-save functionality with network simulation, verify date parsing works correctly for various inputs, ensure keyboard shortcuts function properly, and validate form submission with various edge cases.",
-        "priority": "high",
-        "dependencies": [3, 4],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 6,
-        "title": "Build Main Task List with Drag-and-Drop Reordering",
-        "description": "Create the primary task list interface with glassmorphism styling and drag-and-drop functionality",
-        "details": "Create TaskList component displaying tasks in glassmorphism cards. Implement drag-and-drop using @dnd-kit/core@^6.1.0, @dnd-kit/sortable@^8.0.0, and @dnd-kit/utilities@^3.2.2. Add smooth check/uncheck animations using Framer Motion with spring physics. Create TaskItem component with checkbox, title, due date indicator, category badge, and options menu. Implement visual feedback during drag operations with opacity changes and elevation. Add completion celebrations with confetti effects using canvas-confetti@^1.9.2.",
-        "testStrategy": "Test drag-and-drop functionality across different devices, verify animations perform smoothly at 60fps, ensure task state updates correctly during reordering, and validate accessibility for keyboard navigation.",
-        "priority": "high",
-        "dependencies": [3, 4, 5],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 7,
-        "title": "Create Category Management System",
-        "description": "Build category creation, editing, and filtering functionality with color customization",
-        "details": "Create CategoryManager component with CRUD operations for categories. Implement ColorPicker component with 10 predefined colors (#FF6B35, #1A1A2E, #0F3460, #28A745, #17A2B8, #FFC107, #DC3545, #6F42C1, #FD7E14, #20C997). Add CategoryFilter component with multi-select capability using checkboxes. Create pre-defined categories on first app load: Work, Personal, Shopping, Health. Implement category-based task filtering with smooth transitions. Add category completion tracking and progress indicators. Limit to 10 custom categories for guest/free users, 100 for premium users.",
-        "testStrategy": "Test category creation and deletion, verify color picker functionality, ensure filtering works correctly with multiple categories selected, and validate category limits are enforced properly.",
-        "priority": "medium",
-        "dependencies": [3, 4],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 8,
-        "title": "Implement Due Date System with Visual Indicators",
-        "description": "Add due date functionality with color-coded indicators and calendar integration",
-        "details": "Create DatePicker component using @radix-ui/react-calendar or react-day-picker@^8.10.0. Implement date parsing logic using date-fns parseISO, formatDistanceToNow, and isAfter functions. Add visual due date indicators: green (>3 days), orange (1-3 days), red (overdue). Create DueDateBadge component with relative time display ('due tomorrow', 'overdue by 2 days'). Implement smart grouping: Today, Tomorrow, This Week, Later sections. Add optional push notifications using Web Push API for overdue tasks (browser permission required).",
-        "testStrategy": "Test date parsing with various formats, verify color coding updates correctly based on current date, ensure calendar component works across browsers, and validate notification permissions and delivery.",
-        "priority": "medium",
-        "dependencies": [4, 6],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 9,
-        "title": "Build Search Functionality with Real-time Filtering",
-        "description": "Implement global search across tasks with highlighting and search history",
-        "details": "Create SearchOverlay component with glassmorphism styling triggered by Cmd/Ctrl+K. Implement fuzzy search using Fuse.js with options: keys: ['title', 'description'], threshold: 0.3, includeMatches: true for highlighting. Add real-time search with 300ms debounce using useDeferredValue hook. Create SearchResults component with highlighted matching text using mark tags. Implement search history using localStorage with last 10 searches. Add keyboard navigation (arrow keys, Enter to select, Escape to close) and empty states for no results.",
-        "testStrategy": "Test search performance with large datasets (1000+ tasks), verify highlighting works correctly, ensure keyboard navigation functions properly, and validate search history persistence.",
-        "priority": "medium",
-        "dependencies": [4, 6],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 10,
-        "title": "Create Responsive Layout with Mobile Optimization",
-        "description": "Build responsive layout system optimized for mobile and desktop experiences",
-        "details": "Create responsive layout using CSS Grid and Flexbox. Mobile (320-768px): single-column layout, bottom navigation, large touch targets (44px minimum), simplified glassmorphism for performance. Desktop (1024px+): three-column layout (sidebar, main, details), full glassmorphism effects, hover states. Implement navigation components: MobileNavBar (bottom fixed) and DesktopSidebar (left panel). Add responsive breakpoints in Tailwind config. Use next/dynamic for code splitting heavy components. Implement touch gestures for mobile using react-spring-gesture or similar.",
-        "testStrategy": "Test layout across different screen sizes, verify touch targets meet accessibility guidelines, ensure glassmorphism effects don't impact mobile performance, and validate navigation works on both mobile and desktop.",
-        "priority": "high",
-        "dependencies": [4, 6],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 11,
-        "title": "Implement Theme System (Dark/Light Mode)",
-        "description": "Add theme switching capability with system preference detection",
-        "details": "Create theme system using next-themes@^0.2.1 for automatic dark/light mode switching. Extend Tailwind config with dark mode variants and CSS custom properties for theme colors. Create ThemeProvider component wrapping the app. Implement ThemeToggle component with smooth transitions using Framer Motion. Add system preference detection with 'prefers-color-scheme' media query. Update glassmorphism effects for both themes: light mode uses rgba(255,255,255,0.1), dark mode uses rgba(0,0,0,0.2). Store theme preference in localStorage with sync across tabs.",
-        "testStrategy": "Test theme switching across all components, verify system preference detection works correctly, ensure theme persistence across sessions, and validate glassmorphism effects look good in both themes.",
-        "priority": "medium",
-        "dependencies": [3, 4],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 12,
-        "title": "Build Dashboard with Today View and Progress Tracking",
-        "description": "Create main dashboard showing today's tasks with progress indicators and quick stats",
-        "details": "Create Dashboard component as default route displaying today's tasks filtered by due date. Implement ProgressRing component using SVG circle with stroke-dasharray animation showing completion percentage. Add quick stats: total tasks, completed today, overdue count. Create TodayView with smart grouping: Overdue (red), Today (orange), Tomorrow (blue). Add welcome header with current date using date-fns format. Implement task count animations using Framer Motion when stats change. Add quick access buttons to other views and floating action button for new tasks.",
-        "testStrategy": "Test progress calculations are accurate, verify date filtering works correctly across timezone changes, ensure animations perform smoothly when stats update, and validate quick access navigation functions properly.",
-        "priority": "high",
-        "dependencies": [6, 8],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 13,
-        "title": "Implement Local Storage Persistence with Backup/Export",
-        "description": "Add comprehensive local storage system with data export functionality",
-        "details": "Enhance Zustand stores with comprehensive localStorage persistence using zustand/middleware persist. Implement data migration system for schema changes using version numbers. Create DataExport component allowing JSON export of all tasks and categories with date range selection. Add data import functionality for restoring from backup files. Implement data compression using lz-string@^1.5.0 for localStorage efficiency. Create backup scheduling system warning users to export data periodically. Add data validation using Zod schemas before import/export operations.",
-        "testStrategy": "Test data persistence across browser sessions, verify export/import functionality with large datasets, ensure data migration works correctly between app versions, and validate data integrity after compression/decompression.",
+        "title": "Implement Task Data Models and Validation",
+        "description": "Create TypeScript interfaces and Zod schemas for task and category data structures",
+        "details": "Define Task interface with id, title, description, completed, dueDate, categoryId, createdAt, updatedAt fields. Create Category interface with id, name, color, isCustom properties. Implement Zod validation schemas for form inputs and API data. Setup data transformation utilities and type guards for runtime validation.",
+        "testStrategy": "Unit tests for validation schemas, test edge cases and invalid data handling, verify TypeScript type safety",
         "priority": "medium",
         "dependencies": [3],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Define Core TypeScript Interfaces",
+            "description": "Create Task and Category interfaces with proper type definitions",
+            "dependencies": [],
+            "details": "Define Task interface with id (string), title (string), description (string), completed (boolean), dueDate (Date | null), categoryId (string), createdAt (Date), updatedAt (Date) fields. Create Category interface with id (string), name (string), color (string), isCustom (boolean) properties. Export interfaces from a centralized types file.",
+            "status": "pending",
+            "testStrategy": "Verify TypeScript compilation and type checking for all interface properties"
+          },
+          {
+            "id": 2,
+            "title": "Implement Zod Validation Schemas",
+            "description": "Create comprehensive Zod schemas for task and category validation",
+            "dependencies": ["5.1"],
+            "details": "Implement TaskSchema with string validation for title/description, boolean for completed, optional date for dueDate, and string for categoryId. Create CategorySchema with name length validation, color hex validation, and boolean for isCustom. Include proper error messages for validation failures.",
+            "status": "pending",
+            "testStrategy": "Unit tests for schema validation with valid and invalid data inputs, test edge cases like empty strings and invalid dates"
+          },
+          {
+            "id": 3,
+            "title": "Create Form Input Validation Schemas",
+            "description": "Develop specific Zod schemas for form inputs and user interactions",
+            "dependencies": ["5.2"],
+            "details": "Create TaskCreateSchema and TaskUpdateSchema for form validation with required field validation and input sanitization. Implement CategoryCreateSchema with name uniqueness validation and color format validation. Add validation for partial updates and form state management.",
+            "status": "pending",
+            "testStrategy": "Test form validation with user input scenarios, verify error message display and field validation states"
+          },
+          {
+            "id": 4,
+            "title": "Build Data Transformation Utilities",
+            "description": "Create utility functions for data parsing, serialization, and transformation",
+            "dependencies": ["5.1", "5.2"],
+            "details": "Implement parseTask and parseCategory functions using Zod schemas for safe data parsing. Create serializeTask and serializeCategory for API/storage serialization. Add utility functions for date handling, ID generation, and data sanitization with proper error handling.",
+            "status": "pending",
+            "testStrategy": "Test data transformation with various input formats, verify error handling for malformed data"
+          },
+          {
+            "id": 5,
+            "title": "Setup Runtime Type Guards and Validation",
+            "description": "Implement type guards and runtime validation functions for data integrity",
+            "dependencies": ["5.2", "5.4"],
+            "details": "Create isTask and isCategory type guard functions for runtime type checking. Implement validateTaskArray and validateCategoryArray for bulk validation. Add runtime validation middleware for API responses and local storage data with fallback handling for invalid data.",
+            "status": "pending",
+            "testStrategy": "Test type guards with valid and invalid data, verify runtime validation catches data corruption and provides appropriate fallbacks"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Create Quick Task Capture Component",
+        "description": "Build floating action button with expandable glass input modal for instant task creation (REQ-001)",
+        "details": "Create floating action button with glassmorphism styling that expands to reveal quick-add input modal. Implement auto-focus on open, Ctrl/Cmd+Enter to save, click outside to close. Add optional due date picker and category assignment. Use Framer Motion for smooth expand/collapse animations. Integrate with Zustand store for task creation.",
+        "testStrategy": "Test keyboard shortcuts, verify smooth animations across devices, validate form submission and error states",
+        "priority": "high",
+        "dependencies": [4, 5],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Floating Action Button Component",
+            "description": "Build the base floating action button with glassmorphism styling and positioning",
+            "dependencies": [],
+            "details": "Create FloatingActionButton component with fixed positioning (bottom-right corner), glassmorphism styling using the design system, circular button with plus icon, proper z-index layering, and mobile/desktop responsive sizing. Apply glass-card effects with backdrop-filter blur and rgba backgrounds.",
+            "status": "pending",
+            "testStrategy": "Test button positioning across screen sizes, verify glassmorphism effects render correctly, validate z-index stacking with other components"
+          },
+          {
+            "id": 2,
+            "title": "Implement Expandable Modal Container",
+            "description": "Create modal container that expands from the floating action button",
+            "dependencies": ["6.1"],
+            "details": "Build modal container that animates from button position using Framer Motion. Implement expand/collapse animations with smooth transitions, proper backdrop overlay, and responsive sizing. Handle modal state management and positioning calculations for smooth expansion effect.",
+            "status": "pending",
+            "testStrategy": "Test animation smoothness on different devices, verify modal positioning accuracy, validate backdrop overlay behavior"
+          },
+          {
+            "id": 3,
+            "title": "Build Quick Add Input Form",
+            "description": "Create task input form with auto-focus and keyboard shortcuts",
+            "dependencies": ["6.2"],
+            "details": "Implement task input form with auto-focus on modal open, Ctrl/Cmd+Enter keyboard shortcut for saving, task title input field, and form validation. Add click outside to close functionality and proper focus management for accessibility.",
+            "status": "pending",
+            "testStrategy": "Test keyboard shortcuts on Mac/Windows, verify auto-focus behavior, validate form submission and error handling"
+          },
+          {
+            "id": 4,
+            "title": "Add Due Date and Category Features",
+            "description": "Integrate optional due date picker and category assignment",
+            "dependencies": ["6.3"],
+            "details": "Add optional due date picker component with calendar interface, category dropdown/selector for task organization, and form state management for these additional fields. Ensure consistent styling with glassmorphism design system.",
+            "status": "pending",
+            "testStrategy": "Test date picker functionality, verify category selection behavior, validate optional field handling in form submission"
+          },
+          {
+            "id": 5,
+            "title": "Integrate with Zustand Store",
+            "description": "Connect component to Zustand store for task creation and state management",
+            "dependencies": ["6.4"],
+            "details": "Implement integration with Zustand store for task creation, handle form submission to store, manage loading states during task creation, and implement success/error feedback. Ensure proper state updates and component re-rendering after task creation.",
+            "status": "pending",
+            "testStrategy": "Test task creation flow end-to-end, verify store state updates, validate error handling for failed task creation"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Build Task List Component with Glassmorphism",
+        "description": "Create beautiful task list display with glass cards, check animations, and drag-and-drop reordering (REQ-002, REQ-003, REQ-004)",
+        "details": "Implement task list component using glass-card styling with backdrop-filter effects. Create animated checkboxes with satisfying micro-interactions using Framer Motion. Add drag-and-drop functionality for task reordering with visual feedback. Include smooth animations for task completion and 'Done' button reveal. Optimize for performance with virtualization if needed.",
+        "testStrategy": "Test drag-and-drop on touch devices, verify animation performance, validate accessibility for screen readers",
+        "priority": "high",
+        "dependencies": [5, 6],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Glass Card Base Component",
+            "description": "Build reusable glass card component with backdrop-filter effects and glassmorphism styling",
+            "dependencies": [],
+            "details": "Create a base GlassCard component with configurable backdrop-filter blur, border-radius, and transparency effects. Include hover states and proper shadow effects. Support different sizes and padding variants. Ensure cross-browser compatibility for backdrop-filter property.",
+            "status": "pending",
+            "testStrategy": "Test backdrop-filter support across browsers, verify hover animations, validate component prop variations"
+          },
+          {
+            "id": 2,
+            "title": "Implement Animated Checkbox Component",
+            "description": "Create satisfying checkbox animations with Framer Motion micro-interactions",
+            "dependencies": ["7.1"],
+            "details": "Build animated checkbox component using Framer Motion with smooth check/uncheck transitions. Include scale, opacity, and path drawing animations. Add haptic feedback for mobile devices. Create different animation variants for different interaction states.",
+            "status": "pending",
+            "testStrategy": "Test animation performance on low-end devices, verify haptic feedback on mobile, validate accessibility for screen readers"
+          },
+          {
+            "id": 3,
+            "title": "Build Task List Layout Structure",
+            "description": "Create main task list container with proper spacing, virtualization, and responsive design",
+            "dependencies": ["7.1"],
+            "details": "Implement task list container with proper grid/list layout. Add virtualization support for large task lists using react-window or similar. Ensure responsive design works on mobile and desktop. Include empty state handling and loading states.",
+            "status": "pending",
+            "testStrategy": "Test with large task lists (1000+ items), verify virtualization performance, validate responsive behavior"
+          },
+          {
+            "id": 4,
+            "title": "Add Drag-and-Drop Functionality",
+            "description": "Implement task reordering with visual feedback using react-beautiful-dnd or similar library",
+            "dependencies": ["7.2", "7.3"],
+            "details": "Integrate drag-and-drop functionality for task reordering with smooth animations and visual feedback. Handle touch gestures for mobile devices. Add ghost/placeholder elements during drag operations. Persist new order to state management.",
+            "status": "pending",
+            "testStrategy": "Test drag-and-drop on touch devices, verify reorder persistence, validate accessibility with keyboard navigation"
+          },
+          {
+            "id": 5,
+            "title": "Implement Task Completion Animations",
+            "description": "Create smooth task completion animations and 'Done' button reveal functionality",
+            "dependencies": ["7.2", "7.4"],
+            "details": "Add completion animations when tasks are checked/unchecked with strikethrough effects and opacity transitions. Implement 'Done' button reveal animation when tasks are completed. Create satisfying completion micro-interactions with scale and color transitions.",
+            "status": "pending",
+            "testStrategy": "Test completion animations across different devices, verify 'Done' button functionality, validate animation timing and easing"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Implement Category Management System",
+        "description": "Create category creation, editing, and assignment functionality with predefined and custom categories (REQ-005, REQ-006)",
+        "details": "Setup predefined categories (Work, Personal, Shopping, Health) with distinct colors. Implement custom category creation with 10 category limit validation. Create category management UI with glass card design. Add category assignment during task creation and editing. Implement category persistence in local storage.",
+        "testStrategy": "Test category limit enforcement, verify category color assignments, validate category persistence and restoration",
+        "priority": "medium",
+        "dependencies": [5],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Setup predefined categories data structure",
+            "description": "Create predefined categories (Work, Personal, Shopping, Health) with distinct colors and implement the category data model",
+            "dependencies": [],
+            "details": "Define the predefined categories array with id, name, color properties. Assign distinct colors for each category (Work: blue, Personal: green, Shopping: purple, Health: red). Create the category constants and export them for use throughout the application.",
+            "status": "pending",
+            "testStrategy": "Verify predefined categories are correctly structured and colors are properly assigned"
+          },
+          {
+            "id": 2,
+            "title": "Implement category validation and limit enforcement",
+            "description": "Create validation logic for custom categories with 10 category limit and duplicate name prevention",
+            "dependencies": ["8.1"],
+            "details": "Implement validation functions to check category name uniqueness, enforce 10 category maximum limit, and validate category creation inputs. Add error handling for exceeded limits and duplicate names.",
+            "status": "pending",
+            "testStrategy": "Test category limit enforcement with edge cases, validate duplicate prevention and error messages"
+          },
+          {
+            "id": 3,
+            "title": "Create category management UI components",
+            "description": "Build category management interface with glass card design for viewing, creating, and editing categories",
+            "dependencies": ["8.1"],
+            "details": "Design and implement category management UI with glassmorphism styling. Include category list view with color indicators, add/edit category forms, and delete functionality. Use glass card components for consistent design.",
+            "status": "pending",
+            "testStrategy": "Test UI responsiveness, verify glassmorphism styling, validate form interactions and visual feedback"
+          },
+          {
+            "id": 4,
+            "title": "Integrate category assignment in task forms",
+            "description": "Add category selection functionality to task creation and editing forms",
+            "dependencies": ["8.1", "8.3"],
+            "details": "Modify task creation and editing forms to include category selection dropdown. Display categories with their colors, handle category assignment during task CRUD operations, and update task data model integration.",
+            "status": "pending",
+            "testStrategy": "Test category selection during task creation/editing, verify category assignment persistence"
+          },
+          {
+            "id": 5,
+            "title": "Implement category persistence in local storage",
+            "description": "Create local storage integration for category data persistence and restoration",
+            "dependencies": ["8.2"],
+            "details": "Implement local storage functions for saving and loading custom categories. Handle data migration between app versions, ensure predefined categories are always available, and sync category changes across browser sessions.",
+            "status": "pending",
+            "testStrategy": "Test category persistence across browser sessions, validate data restoration and migration scenarios"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Build Category Filtering System",
+        "description": "Create filter view functionality to display tasks by selected categories (REQ-007)",
+        "details": "Implement tag-based filtering system with glassmorphism filter buttons. Create filtered task views showing only selected category tasks. Add 'All Categories' option and multi-select filtering capability. Integrate with Zustand store for filter state management. Include smooth transitions when switching between filtered views.",
+        "testStrategy": "Test filter combinations, verify task count accuracy in filtered views, validate filter state persistence",
+        "priority": "medium",
+        "dependencies": [7, 8],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Filter Button Component with Glassmorphism Design",
+            "description": "Build reusable filter button component with glassmorphism styling for category selection",
+            "dependencies": [],
+            "details": "Create FilterButton component with glass morphism effect using backdrop-blur and semi-transparent backgrounds. Include active/inactive states with smooth color transitions. Support category colors and 'All Categories' styling. Implement hover and focus states with accessibility features.",
+            "status": "pending",
+            "testStrategy": "Test button styling variations, verify accessibility compliance, validate smooth state transitions"
+          },
+          {
+            "id": 2,
+            "title": "Implement Filter State Management in Zustand Store",
+            "description": "Add filter state slice to Zustand store for managing selected categories and filter logic",
+            "dependencies": ["9.1"],
+            "details": "Extend Zustand store with filter slice containing selectedCategories array, activeFilters state, and filter actions (setFilter, clearFilters, toggleCategory). Implement multi-select logic and 'All Categories' toggle functionality. Add filter state persistence to localStorage.",
+            "status": "pending",
+            "testStrategy": "Unit tests for filter actions, verify state persistence, test multi-select combinations and edge cases"
+          },
+          {
+            "id": 3,
+            "title": "Build Filtered Task View Component",
+            "description": "Create component to display tasks filtered by selected categories with task count indicators",
+            "dependencies": ["9.2"],
+            "details": "Implement FilteredTaskView component that renders tasks based on active filters. Include task count display per category and total filtered count. Handle empty states when no tasks match filters. Integrate with existing task list components and maintain consistent styling.",
+            "status": "pending",
+            "testStrategy": "Test filter accuracy, verify task counts match filtered results, validate empty state handling"
+          },
+          {
+            "id": 4,
+            "title": "Add Filter Bar UI with Category Selection",
+            "description": "Create horizontal scrollable filter bar showing all available categories with selection controls",
+            "dependencies": ["9.1", "9.3"],
+            "details": "Build FilterBar component with horizontal scroll for category buttons. Include 'All Categories' button as first option. Add clear filters action and visual indicators for active filters count. Implement responsive design for mobile horizontal scroll and desktop grid layout.",
+            "status": "pending",
+            "testStrategy": "Test horizontal scroll behavior, verify responsive layout, validate filter clearing functionality"
+          },
+          {
+            "id": 5,
+            "title": "Implement Filter Transitions and Performance Optimization",
+            "description": "Add smooth animations when switching between filtered views and optimize rendering performance",
+            "dependencies": ["9.3", "9.4"],
+            "details": "Implement React transitions for filter changes using framer-motion or CSS transitions. Add fade-in/out effects for filtered task lists. Optimize performance with useMemo for filtered task calculations and virtual scrolling for large lists. Include loading states during filter operations.",
+            "status": "pending",
+            "testStrategy": "Test animation smoothness, measure performance with large datasets, verify loading states and transitions"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Add Due Date Functionality",
+        "description": "Implement due date setting and visual indicators for tasks (REQ-017)",
+        "details": "Create date picker component using date-fns library for date parsing and manipulation. Add due date field to task creation and editing forms. Implement visual due date indicators with color coding (overdue, due today, upcoming). Create date formatting utilities and relative date displays (e.g., 'Due tomorrow').",
+        "testStrategy": "Test date picker functionality across timezones, verify date parsing accuracy, validate visual indicators for different due date states",
+        "priority": "medium",
+        "dependencies": [7],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Date Picker Component",
+            "description": "Build a reusable date picker component using date-fns library for date selection and manipulation",
+            "dependencies": [],
+            "details": "Create a custom date picker component with date-fns integration for parsing, formatting, and validation. Include calendar UI with glassmorphism styling, keyboard navigation support, and timezone handling. Implement date selection validation and error states.",
+            "status": "pending",
+            "testStrategy": "Test date selection across different timezones, verify date parsing accuracy, validate keyboard navigation and accessibility"
+          },
+          {
+            "id": 2,
+            "title": "Add Due Date Fields to Task Forms",
+            "description": "Integrate due date field into task creation and editing forms with validation",
+            "dependencies": ["10.1"],
+            "details": "Add due date input field to both task creation and editing forms. Implement form validation for due date selection, including preventing past dates for new tasks. Add clear date option and integrate with existing form submission logic.",
+            "status": "pending",
+            "testStrategy": "Test form validation with various date inputs, verify integration with existing task creation flow, validate date persistence"
+          },
+          {
+            "id": 3,
+            "title": "Implement Visual Due Date Indicators",
+            "description": "Create color-coded visual indicators for different due date states (overdue, due today, upcoming)",
+            "dependencies": ["10.2"],
+            "details": "Design and implement visual indicators with distinct colors: red for overdue, orange for due today, yellow for due soon, and green for upcoming. Add subtle animations and badges to task cards. Ensure indicators work with both light and dark themes.",
+            "status": "pending",
+            "testStrategy": "Test indicator accuracy across different date scenarios, verify color accessibility and theme compatibility, validate real-time updates"
+          },
+          {
+            "id": 4,
+            "title": "Create Date Formatting Utilities",
+            "description": "Build utility functions for date formatting and relative date displays",
+            "dependencies": [],
+            "details": "Create utility functions for formatting dates in various formats (absolute and relative). Implement relative date displays like 'Due tomorrow', 'Due in 3 days', 'Overdue by 2 days'. Include internationalization support and consistent formatting across the application.",
+            "status": "pending",
+            "testStrategy": "Test date formatting accuracy, verify relative date calculations, validate internationalization support"
+          },
+          {
+            "id": 5,
+            "title": "Update Task Storage Schema",
+            "description": "Modify task data structure to include due date field and update storage logic",
+            "dependencies": ["10.4"],
+            "details": "Update TypeScript interfaces to include optional dueDate field. Modify Zustand store to handle due date operations. Update local storage persistence to include due date data. Implement migration logic for existing tasks without due dates.",
+            "status": "pending",
+            "testStrategy": "Test data migration for existing tasks, verify storage persistence, validate TypeScript type safety"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Implement Search Functionality",
+        "description": "Create instant search across all tasks with glassmorphism overlay (REQ-008, REQ-009)",
+        "details": "Implement search overlay with glassmorphism styling triggered by Cmd/Ctrl+K or search icon. Use Fuse.js for fuzzy search functionality across task content and titles. Add debounced search implementation for real-time results. Create empty state handling for no results and search result pagination for performance.",
+        "testStrategy": "Test search accuracy and performance with large datasets, verify keyboard shortcuts, validate fuzzy search results relevance",
+        "priority": "low",
+        "dependencies": [7],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create search overlay component with glassmorphism styling",
+            "description": "Build the visual search overlay component with glassmorphism effects and responsive design",
+            "dependencies": [],
+            "details": "Create SearchOverlay component with glassmorphism backdrop blur, semi-transparent background, and modern styling. Implement responsive design that adapts to different screen sizes. Add smooth enter/exit animations and proper z-index layering to ensure overlay appears above all other content.",
+            "status": "pending",
+            "testStrategy": "Test overlay appearance across different screen sizes, verify glassmorphism effects render correctly, validate z-index stacking and animations"
+          },
+          {
+            "id": 2,
+            "title": "Implement keyboard shortcut handlers for search activation",
+            "description": "Add Cmd/Ctrl+K keyboard shortcut and search icon click handlers to trigger search overlay",
+            "dependencies": ["11.1"],
+            "details": "Setup global keyboard event listeners for Cmd/Ctrl+K shortcut combination. Add click handler for search icon in the UI. Implement proper event handling with preventDefault to avoid browser conflicts. Ensure shortcuts work across all pages and components.",
+            "status": "pending",
+            "testStrategy": "Test keyboard shortcuts on different operating systems (Mac/Windows), verify search icon click functionality, validate event handling doesn't interfere with other shortcuts"
+          },
+          {
+            "id": 3,
+            "title": "Integrate Fuse.js for fuzzy search functionality",
+            "description": "Setup Fuse.js library and configure fuzzy search across task titles and content",
+            "dependencies": ["11.1"],
+            "details": "Install and configure Fuse.js with optimized search options for task data. Setup search indices for task titles, descriptions, and category names. Configure fuzzy search parameters including threshold, distance, and keys to search. Implement search result ranking and relevance scoring.",
+            "status": "pending",
+            "testStrategy": "Test search accuracy with various query types, verify fuzzy matching works for typos and partial matches, validate search performance with large datasets"
+          },
+          {
+            "id": 4,
+            "title": "Implement debounced search with real-time results",
+            "description": "Create debounced search input that provides real-time search results as user types",
+            "dependencies": ["11.3"],
+            "details": "Implement search input with debounce functionality (300ms delay) to optimize performance. Create real-time search results display that updates as user types. Add loading states and smooth transitions between result sets. Handle edge cases like empty queries and special characters.",
+            "status": "pending",
+            "testStrategy": "Test debounce timing with rapid typing, verify real-time results update smoothly, validate performance with large task datasets"
+          },
+          {
+            "id": 5,
+            "title": "Create search results display with pagination and empty states",
+            "description": "Build search results list with pagination, highlighting, and empty state handling",
+            "dependencies": ["11.4"],
+            "details": "Create search results component displaying matching tasks with highlighted search terms. Implement pagination for performance with large result sets (10 results per page). Add empty state UI for no search results with helpful messaging. Include result count display and clear search functionality.",
+            "status": "pending",
+            "testStrategy": "Test pagination with various result set sizes, verify search term highlighting works correctly, validate empty state displays appropriately"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Create Main Dashboard (Today View)",
+        "description": "Build primary workspace showing today's tasks with welcome header and quick access features",
+        "details": "Create Today view dashboard with welcome header displaying current date, quick add input integration, and today's tasks grouped by time/category. Implement task prioritization display and quick access to other lists. Add glassmorphism styling consistent with design system and responsive layout for mobile/desktop.",
+        "testStrategy": "Test date display accuracy, verify task grouping logic, validate responsive behavior across screen sizes",
+        "priority": "high",
+        "dependencies": [7, 9, 10],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Welcome Header Component",
+            "description": "Build welcome header with current date display and personalized greeting",
+            "dependencies": [],
+            "details": "Implement a welcome header component that displays current date in readable format, personalized greeting message, and apply glassmorphism styling. Include responsive behavior for mobile and desktop layouts with proper typography and spacing.",
+            "status": "pending",
+            "testStrategy": "Test date formatting accuracy, verify responsive behavior across screen sizes, validate glassmorphism visual effects"
+          },
+          {
+            "id": 2,
+            "title": "Integrate Quick Add Input Component",
+            "description": "Embed quick task creation input within the dashboard layout",
+            "dependencies": ["12.1"],
+            "details": "Integrate the existing quick add input component from Task 6 into the dashboard header area. Ensure seamless integration with dashboard layout and maintain consistent styling. Position input for optimal accessibility and user flow.",
+            "status": "pending",
+            "testStrategy": "Test input integration functionality, verify keyboard navigation, validate form submission from dashboard context"
+          },
+          {
+            "id": 3,
+            "title": "Implement Today's Tasks Display Logic",
+            "description": "Create component to fetch, filter, and display today's tasks",
+            "dependencies": ["12.2"],
+            "details": "Build task display logic to filter tasks for current date, fetch from Zustand store, and render task list with proper state management. Include empty state handling and loading states. Support real-time updates when tasks are added or modified.",
+            "status": "pending",
+            "testStrategy": "Test date filtering accuracy, verify real-time task updates, validate empty and loading states"
+          },
+          {
+            "id": 4,
+            "title": "Create Task Grouping and Prioritization System",
+            "description": "Implement task organization by time periods and priority levels",
+            "dependencies": ["12.3"],
+            "details": "Build task grouping logic to organize today's tasks by time categories (overdue, morning, afternoon, evening) and priority levels (high, medium, low). Implement visual indicators for different priority levels and time-based grouping with collapsible sections.",
+            "status": "pending",
+            "testStrategy": "Test task grouping accuracy, verify priority sorting logic, validate collapsible section functionality"
+          },
+          {
+            "id": 5,
+            "title": "Add Quick Access Navigation Features",
+            "description": "Implement quick navigation shortcuts and list access from dashboard",
+            "dependencies": ["12.4"],
+            "details": "Create quick access buttons/links for navigating to different task lists, settings, and other key features. Implement keyboard shortcuts for power users and ensure quick actions are easily discoverable. Add visual indicators for task counts in other lists.",
+            "status": "pending",
+            "testStrategy": "Test navigation shortcuts functionality, verify keyboard shortcut mappings, validate task count accuracy in quick access indicators"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Build All Lists View",
+        "description": "Create overview page showing all task categories and custom lists in grid layout",
+        "details": "Implement grid layout of glass cards for each category with task counts and category colors. Add create new category floating action button. Include search and filter options for category management. Display category statistics and quick preview of tasks within each category.",
+        "testStrategy": "Test grid layout responsiveness, verify category statistics accuracy, validate category creation workflow",
+        "priority": "medium",
+        "dependencies": [8, 9],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Lists Overview Page Structure",
+            "description": "Set up the basic page component structure with routing and main container layout",
+            "dependencies": [],
+            "details": "Create the AllListsView component with proper routing setup. Implement the main page container with glassmorphism background and responsive layout structure. Set up the page header with title and navigation breadcrumbs.",
+            "status": "pending",
+            "testStrategy": "Test page routing functionality, verify responsive container layout, validate page accessibility structure"
+          },
+          {
+            "id": 2,
+            "title": "Implement Grid Layout System",
+            "description": "Build responsive grid container for displaying category cards with proper spacing and alignment",
+            "dependencies": ["13.1"],
+            "details": "Create CSS Grid layout system that adapts from 1 column on mobile to 2-3 columns on tablet/desktop. Implement proper gap spacing, auto-fit responsive behavior, and ensure cards maintain consistent aspect ratios across screen sizes.",
+            "status": "pending",
+            "testStrategy": "Test grid responsiveness across breakpoints, verify consistent card spacing, validate layout performance with varying numbers of categories"
+          },
+          {
+            "id": 3,
+            "title": "Build Category Glass Cards",
+            "description": "Create individual category card components with glassmorphism styling, task counts, and category colors",
+            "dependencies": ["13.2"],
+            "details": "Design and implement glass card components with backdrop-filter blur effects, category-specific color accents, task count badges, and subtle hover animations. Include category icons, names, and quick preview of recent tasks within each card.",
+            "status": "pending",
+            "testStrategy": "Test glassmorphism effects across browsers, verify color theming accuracy, validate hover states and card interactions"
+          },
+          {
+            "id": 4,
+            "title": "Add Search and Filter Controls",
+            "description": "Implement search input and filter options for category management with real-time updates",
+            "dependencies": ["13.3"],
+            "details": "Create search input with glassmorphism styling for real-time category filtering. Implement filter dropdown for sorting by task count, creation date, or alphabetical order. Add filter chips for active filters with clear functionality.",
+            "status": "pending",
+            "testStrategy": "Test real-time search functionality, verify filter accuracy, validate keyboard navigation and accessibility"
+          },
+          {
+            "id": 5,
+            "title": "Integrate Create Category FAB",
+            "description": "Add floating action button for creating new categories with modal integration",
+            "dependencies": ["13.4"],
+            "details": "Implement floating action button with glassmorphism styling positioned in bottom-right corner. Connect to category creation modal with smooth animations. Ensure FAB remains accessible and doesn't interfere with grid scrolling or mobile navigation.",
+            "status": "pending",
+            "testStrategy": "Test FAB positioning across screen sizes, verify modal integration, validate touch targets and accessibility compliance"
+          }
+        ]
       },
       {
         "id": 14,
-        "title": "Create Completed Tasks View with Archive Management",
-        "description": "Build interface for viewing and managing completed tasks with bulk operations",
-        "details": "Create CompletedTasksView component displaying chronologically sorted completed tasks. Implement archive functionality moving completed tasks older than 30 days to archive. Add bulk operations: select all, delete selected, restore selected tasks. Create completion statistics showing: daily streaks, weekly/monthly completion rates, productivity trends. Implement infinite scrolling or pagination for large completed task lists using react-window@^1.8.8 for performance. Add search functionality within completed tasks and filter by date ranges or categories.",
-        "testStrategy": "Test bulk operations with large datasets, verify statistics calculations are accurate, ensure infinite scrolling performs well with thousands of completed tasks, and validate restore functionality works correctly.",
+        "title": "Create Completed Tasks View",
+        "description": "Build interface for reviewing and restoring completed items with chronological organization",
+        "details": "Create completed tasks page showing chronological list of finished items with completion dates. Implement restore functionality to move tasks back to active state. Add bulk actions for clearing old completed tasks. Include search and filter capabilities for completed items with glassmorphism styling.",
+        "testStrategy": "Test task restoration functionality, verify chronological sorting accuracy, validate bulk action performance",
         "priority": "low",
-        "dependencies": [6, 12],
+        "dependencies": [7],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Completed Tasks Page Component",
+            "description": "Build the main page component for displaying completed tasks with proper routing and layout structure",
+            "dependencies": [],
+            "details": "Create CompletedTasksPage component with proper Next.js page routing. Implement basic page structure with glassmorphism container, header section, and main content area. Set up proper TypeScript interfaces for completed task data and page props.",
+            "status": "pending",
+            "testStrategy": "Test page routing, verify component renders correctly, validate TypeScript interfaces"
+          },
+          {
+            "id": 2,
+            "title": "Implement Chronological Task List Display",
+            "description": "Build the main list component showing completed tasks in chronological order with completion dates",
+            "dependencies": ["14.1"],
+            "details": "Create CompletedTasksList component that fetches and displays completed tasks sorted by completion date (most recent first). Include task title, completion date/time, and original due date if applicable. Apply glassmorphism styling consistent with design system.",
+            "status": "pending",
+            "testStrategy": "Test chronological sorting accuracy, verify date formatting, validate list rendering performance"
+          },
+          {
+            "id": 3,
+            "title": "Add Task Restoration Functionality",
+            "description": "Implement the ability to restore completed tasks back to active state with proper state management",
+            "dependencies": ["14.2"],
+            "details": "Add restore button/action to each completed task item. Implement restore functionality that moves task from completed to active state, updates Zustand store, and provides user feedback. Include confirmation dialog for restoration action.",
+            "status": "pending",
+            "testStrategy": "Test task restoration functionality, verify state updates correctly, validate user feedback mechanisms"
+          },
+          {
+            "id": 4,
+            "title": "Build Search and Filter Capabilities",
+            "description": "Create search input and filter options for finding specific completed tasks",
+            "dependencies": ["14.2"],
+            "details": "Add search input with real-time filtering by task title and description. Implement date range filter, category filter, and completion date sorting options. Use debounced search to optimize performance and maintain filter state in component.",
+            "status": "pending",
+            "testStrategy": "Test search functionality accuracy, verify filter combinations work correctly, validate performance with large datasets"
+          },
+          {
+            "id": 5,
+            "title": "Implement Bulk Actions for Completed Tasks",
+            "description": "Add bulk selection and actions for managing multiple completed tasks simultaneously",
+            "dependencies": ["14.3", "14.4"],
+            "details": "Add checkbox selection for individual tasks and select-all functionality. Implement bulk delete action for permanently removing old completed tasks and bulk restore for multiple task restoration. Include confirmation dialogs for destructive actions and loading states.",
+            "status": "pending",
+            "testStrategy": "Test bulk selection UI, verify bulk actions perform correctly, validate confirmation dialogs and loading states"
+          }
+        ]
       },
       {
         "id": 15,
-        "title": "Add Authentication System and User Profiles",
-        "description": "Implement user authentication with multiple providers and profile management",
-        "details": "Integrate authentication using NextAuth.js@^4.24.5 with providers: email/password, Google OAuth, GitHub, Apple ID. Create auth configuration in pages/api/auth/[...nextauth].ts. Implement user registration/login forms with react-hook-form and zod validation. Create UserProfile component for account management, avatar upload using next-cloudinary, and subscription status display. Add protected routes using Next.js middleware. Implement session management with automatic token refresh. Create account deletion functionality with data export before deletion. Add email verification for new accounts.",
-        "testStrategy": "Test authentication flow with all providers, verify protected routes redirect correctly, ensure session persistence works across browser restarts, and validate email verification process completes successfully.",
-        "priority": "medium",
-        "dependencies": [3, 4, 13],
+        "title": "Implement Settings and Theme Management",
+        "description": "Create settings page with theme switching, preferences, and app configuration options",
+        "details": "Build settings page with glassmorphism styling including dark/light theme toggle, notification preferences, and data management options. Implement theme switching with smooth transitions and system preference detection. Add export/import functionality for local storage data backup. Include privacy policy and support links as specified in footer requirements.",
+        "testStrategy": "Test theme switching animations, verify settings persistence, validate data export/import functionality",
+        "priority": "low",
+        "dependencies": [4],
         "status": "pending",
-        "subtasks": []
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create Settings Page Layout and Navigation",
+            "description": "Build the main settings page component with glassmorphism styling and navigation structure",
+            "dependencies": [],
+            "details": "Create SettingsPage component with glassmorphism card design. Implement navigation structure for different settings sections (Theme, Notifications, Data Management, Privacy). Add proper routing and page transitions. Include back navigation to main app.",
+            "status": "pending",
+            "testStrategy": "Test page rendering, navigation between sections, glassmorphism styling consistency, responsive design across devices"
+          },
+          {
+            "id": 2,
+            "title": "Implement Theme Switching System",
+            "description": "Create dark/light theme toggle with smooth transitions and system preference detection",
+            "dependencies": ["15.1"],
+            "details": "Build theme context provider with dark/light mode state. Implement CSS variables for theme colors and smooth transitions. Add system preference detection using prefers-color-scheme. Create theme toggle component with animated switch. Persist theme preference in local storage.",
+            "status": "pending",
+            "testStrategy": "Test theme switching animations, verify system preference detection, validate theme persistence across sessions, test color contrast ratios"
+          },
+          {
+            "id": 3,
+            "title": "Build Notification Preferences Interface",
+            "description": "Create notification settings section with toggles for different notification types",
+            "dependencies": ["15.1"],
+            "details": "Design notification preferences UI with toggle switches for different notification types (task reminders, due date alerts, completion notifications). Implement notification permission handling. Add notification preview functionality. Store preferences in local storage with proper validation.",
+            "status": "pending",
+            "testStrategy": "Test notification toggles functionality, verify browser notification permissions, validate preference persistence, test notification preview features"
+          },
+          {
+            "id": 4,
+            "title": "Implement Data Management and Export/Import",
+            "description": "Create data backup functionality with export/import capabilities for local storage",
+            "dependencies": ["15.1"],
+            "details": "Build data export functionality to generate JSON backup of tasks, categories, and settings. Implement import functionality with data validation and conflict resolution. Add data clearing options with confirmation dialogs. Create backup/restore UI with file upload/download capabilities.",
+            "status": "pending",
+            "testStrategy": "Test data export completeness, verify import validation and error handling, test data clearing functionality, validate file format compatibility"
+          },
+          {
+            "id": 5,
+            "title": "Add Privacy Policy and Support Links",
+            "description": "Implement footer section with privacy policy, support links, and app information",
+            "dependencies": ["15.1"],
+            "details": "Create footer section within settings page containing privacy policy link, support/contact information, app version display, and terms of service. Implement modal or external link handling for privacy policy. Add feedback submission functionality if required.",
+            "status": "pending",
+            "testStrategy": "Test link functionality, verify modal displays, validate external link handling, test feedback submission if implemented"
+          }
+        ]
       }
     ],
     "metadata": {
-      "created": "2025-08-04T16:21:12.304Z",
-      "updated": "2025-08-04T16:21:12.304Z",
+      "created": "2025-08-08T08:41:22.888Z",
+      "updated": "2025-08-08T08:41:22.888Z",
       "description": "Tasks for master context"
     }
   }
