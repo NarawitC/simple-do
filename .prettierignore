@@ -1,0 +1,23 @@
+# Ignore artifacts:
+build
+coverage
+
+# Git and hooks
+.git/
+.husky/
+.husky/pre-commit
+.prettierignore
+
+# Lock files
+*.lock
+pnpm-lock.yaml
+
+# Node modules
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# System files
+.DS_Store
