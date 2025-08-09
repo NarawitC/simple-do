@@ -63,65 +63,97 @@ export default function Example() {
       name: "Primary",
       className: "bg-primary",
       textClass: "text-primary-foreground",
+      description: "Deep purple accent - main brand color",
     },
     {
       name: "Secondary",
       className: "bg-secondary",
       textClass: "text-secondary-foreground",
+      description: "Light secondary backgrounds",
     },
     {
       name: "Accent",
       className: "bg-accent",
       textClass: "text-accent-foreground",
-    },
-    {
-      name: "Muted",
-      className: "bg-muted",
-      textClass: "text-muted-foreground",
-    },
-    {
-      name: "Destructive",
-      className: "bg-destructive",
-      textClass: "text-destructive-foreground",
+      description:
+        "Deeper purple (#7a12ff) - used for borders and rings in dark theme",
     },
     {
       name: "Background",
       className: "bg-background",
       textClass: "text-foreground",
+      description: "Main app background",
     },
     {
       name: "Card",
       className: "bg-card",
       textClass: "text-card-foreground",
-    },
-    {
-      name: "Popover",
-      className: "bg-popover",
-      textClass: "text-popover-foreground",
+      description: "Card surfaces",
     },
     {
       name: "Border",
-      className: "bg-border",
+      className: "bg-border border-2 border-border",
       textClass: "text-foreground",
-    },
-    {
-      name: "Input",
-      className: "bg-input",
-      textClass: "text-foreground",
+      description:
+        "Border color - references accent color (var(--accent)) in dark theme",
     },
     {
       name: "Ring",
       className: "bg-ring",
-      textClass: "text-foreground",
+      textClass: "text-primary-foreground",
+      description:
+        "Focus ring color - references accent color (var(--accent)) in dark theme",
+    },
+    {
+      name: "Muted",
+      className: "bg-muted",
+      textClass: "text-muted-foreground",
+      description: "Muted backgrounds",
+    },
+  ];
+
+  const statusColors = [
+    {
+      name: "Success",
+      className: "bg-success",
+      description: "Green - positive states",
+    },
+    {
+      name: "Warning",
+      className: "bg-warning",
+      description: "Orange - warning states",
+    },
+    { name: "Error", className: "bg-error", description: "Red - error states" },
+    { name: "Info", className: "bg-info", description: "Blue - info states" },
+    {
+      name: "Destructive",
+      className: "bg-destructive",
+      description: "Red - destructive actions",
     },
   ];
 
   const chartColors = [
-    { name: "Chart 1", className: "bg-chart-1" },
-    { name: "Chart 2", className: "bg-chart-2" },
-    { name: "Chart 3", className: "bg-chart-3" },
-    { name: "Chart 4", className: "bg-chart-4" },
-    { name: "Chart 5", className: "bg-chart-5" },
+    {
+      name: "Chart 1 (Primary)",
+      className: "bg-chart-1",
+      description: "Purple primary",
+    },
+    {
+      name: "Chart 2 (Secondary)",
+      className: "bg-chart-2",
+      description: "Light purple",
+    },
+    {
+      name: "Chart 3 (Success)",
+      className: "bg-chart-3",
+      description: "Green",
+    },
+    {
+      name: "Chart 4 (Warning)",
+      className: "bg-chart-4",
+      description: "Orange",
+    },
+    { name: "Chart 5 (Error)", className: "bg-chart-5", description: "Red" },
   ];
 
   return (
@@ -132,9 +164,11 @@ export default function Example() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold">Theme Showcase</h1>
+                <h1 className="text-3xl font-bold">
+                  Mobile Task Management Design
+                </h1>
                 <p className="text-muted-foreground">
-                  Visual testing ground for all UI components and colors
+                  Deep purple accent theme with modern card-based layouts
                 </p>
               </div>
               <ThemeToggle />
@@ -172,6 +206,8 @@ export default function Example() {
           {/* Color Palette */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold">Color Palette</h2>
+
+            <h3 className="mb-4 text-xl font-medium">Main Colors</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {colorSwatches.map((color) => (
                 <Card key={color.name}>
@@ -184,7 +220,27 @@ export default function Example() {
                       {color.className}
                     </div>
                     <div className="text-muted-foreground text-xs">
-                      Text: {color.textClass}
+                      {color.description}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <h3 className="mt-8 mb-4 text-xl font-medium">Status Colors</h3>
+            <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
+              {statusColors.map((color) => (
+                <Card key={color.name}>
+                  <CardContent className="p-4">
+                    <div
+                      className={`mb-2 h-12 w-full rounded-md border ${color.className}`}
+                    />
+                    <div className="text-sm font-medium">{color.name}</div>
+                    <div className="text-muted-foreground font-mono text-xs">
+                      {color.className}
+                    </div>
+                    <div className="text-muted-foreground text-xs">
+                      {color.description}
                     </div>
                   </CardContent>
                 </Card>
@@ -192,7 +248,7 @@ export default function Example() {
             </div>
 
             <h3 className="mt-8 mb-4 text-xl font-medium">Chart Colors</h3>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
               {chartColors.map((color) => (
                 <Card key={color.name}>
                   <CardContent className="p-4">
@@ -202,6 +258,9 @@ export default function Example() {
                     <div className="text-sm font-medium">{color.name}</div>
                     <div className="text-muted-foreground font-mono text-xs">
                       {color.className}
+                    </div>
+                    <div className="text-muted-foreground text-xs">
+                      {color.description}
                     </div>
                   </CardContent>
                 </Card>
@@ -547,36 +606,59 @@ export default function Example() {
           {/* Interactive States */}
           <section>
             <h2 className="mb-4 text-2xl font-semibold">Interactive States</h2>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardHeader>
-                  <CardTitle>Normal State</CardTitle>
+                  <CardTitle>Primary Actions</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <Button className="w-full">Click me</Button>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Disabled State</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Button disabled className="w-full">
-                    Disabled
+                <CardContent className="space-y-3">
+                  <Button className="w-full">Primary Button</Button>
+                  <Button variant="secondary" className="w-full">
+                    Secondary
                   </Button>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Loading State</CardTitle>
+                  <CardTitle>Status Actions</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <Skeleton className="h-10 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
+                <CardContent className="space-y-3">
+                  <Button className="bg-success hover:bg-success/90 w-full">
+                    Success
+                  </Button>
+                  <Button className="bg-warning hover:bg-warning/90 w-full text-white">
+                    Warning
+                  </Button>
+                  <Button variant="destructive" className="w-full">
+                    Error
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Surface States</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="bg-surface rounded-lg border p-3">
+                    Surface
                   </div>
+                  <div className="bg-surface-hover rounded-lg border p-3">
+                    Surface Hover
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Text Variations</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="text-foreground">Primary Text</div>
+                  <div className="text-muted-foreground">Muted Text</div>
+                  <div className="text-text-muted">Custom Muted</div>
+                  <div className="text-text-disabled">Disabled Text</div>
                 </CardContent>
               </Card>
             </div>
