@@ -126,9 +126,9 @@ export default function Example() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="bg-background text-foreground min-h-screen">
         {/* Header */}
-        <div className="border-b bg-card">
+        <div className="bg-card border-b">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <div>
@@ -142,10 +142,10 @@ export default function Example() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8 space-y-12">
+        <div className="container mx-auto space-y-12 px-4 py-8">
           {/* Navigation */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Navigation</h2>
+            <h2 className="mb-4 text-2xl font-semibold">Navigation</h2>
             <div className="space-y-4">
               <Breadcrumb>
                 <BreadcrumbList>
@@ -171,19 +171,19 @@ export default function Example() {
 
           {/* Color Palette */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Color Palette</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <h2 className="mb-4 text-2xl font-semibold">Color Palette</h2>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {colorSwatches.map((color) => (
                 <Card key={color.name}>
                   <CardContent className="p-4">
                     <div
-                      className={`w-full h-16 rounded-md mb-2 border ${color.className}`}
+                      className={`mb-2 h-16 w-full rounded-md border ${color.className}`}
                     />
                     <div className="text-sm font-medium">{color.name}</div>
-                    <div className="text-xs text-muted-foreground font-mono">
+                    <div className="text-muted-foreground font-mono text-xs">
                       {color.className}
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-muted-foreground text-xs">
                       Text: {color.textClass}
                     </div>
                   </CardContent>
@@ -191,16 +191,16 @@ export default function Example() {
               ))}
             </div>
 
-            <h3 className="text-xl font-medium mt-8 mb-4">Chart Colors</h3>
+            <h3 className="mt-8 mb-4 text-xl font-medium">Chart Colors</h3>
             <div className="grid grid-cols-5 gap-4">
               {chartColors.map((color) => (
                 <Card key={color.name}>
                   <CardContent className="p-4">
                     <div
-                      className={`w-full h-12 rounded-md mb-2 border ${color.className}`}
+                      className={`mb-2 h-12 w-full rounded-md border ${color.className}`}
                     />
                     <div className="text-sm font-medium">{color.name}</div>
-                    <div className="text-xs text-muted-foreground font-mono">
+                    <div className="text-muted-foreground font-mono text-xs">
                       {color.className}
                     </div>
                   </CardContent>
@@ -211,9 +211,9 @@ export default function Example() {
 
           {/* Typography */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Typography</h2>
+            <h2 className="mb-4 text-2xl font-semibold">Typography</h2>
             <Card>
-              <CardContent className="p-6 space-y-4">
+              <CardContent className="space-y-4 p-6">
                 <h1 className="text-4xl font-bold">Heading 1</h1>
                 <h2 className="text-3xl font-semibold">Heading 2</h2>
                 <h3 className="text-2xl font-medium">Heading 3</h3>
@@ -221,10 +221,10 @@ export default function Example() {
                 <p className="text-base">
                   Regular paragraph text with normal weight and spacing.
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Muted text for secondary information.
                 </p>
-                <code className="bg-muted px-2 py-1 rounded text-sm font-mono">
+                <code className="bg-muted rounded px-2 py-1 font-mono text-sm">
                   Inline code example
                 </code>
               </CardContent>
@@ -233,14 +233,14 @@ export default function Example() {
 
           {/* Buttons */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Buttons</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h2 className="mb-4 text-2xl font-semibold">Buttons</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader>
                   <CardTitle>Button Variants</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex gap-2 flex-wrap">
+                  <div className="flex flex-wrap gap-2">
                     <Button>Default</Button>
                     <Button variant="secondary">Secondary</Button>
                     <Button variant="destructive">Destructive</Button>
@@ -256,7 +256,7 @@ export default function Example() {
                   <CardTitle>Button Sizes</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex gap-2 items-center flex-wrap">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Button size="sm">Small</Button>
                     <Button size="default">Default</Button>
                     <Button size="lg">Large</Button>
@@ -271,8 +271,8 @@ export default function Example() {
 
           {/* Form Components */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Form Components</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h2 className="mb-4 text-2xl font-semibold">Form Components</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader>
                   <CardTitle>Input Fields</CardTitle>
@@ -354,7 +354,7 @@ export default function Example() {
 
           {/* Feedback Components */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Feedback Components</h2>
+            <h2 className="mb-4 text-2xl font-semibold">Feedback Components</h2>
             <div className="space-y-4">
               <Alert>
                 <Info className="h-4 w-4" />
@@ -372,7 +372,7 @@ export default function Example() {
                 </AlertDescription>
               </Alert>
 
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex flex-wrap gap-2">
                 <Badge>Default</Badge>
                 <Badge variant="secondary">Secondary</Badge>
                 <Badge variant="destructive">Destructive</Badge>
@@ -411,7 +411,7 @@ export default function Example() {
 
           {/* Layout Components */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Layout Components</h2>
+            <h2 className="mb-4 text-2xl font-semibold">Layout Components</h2>
             <div className="space-y-6">
               <Card>
                 <CardHeader>
@@ -467,7 +467,7 @@ export default function Example() {
                   <PopoverContent>
                     <div className="space-y-2">
                       <h4 className="font-medium">Popover Content</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         This is popover content with additional information.
                       </p>
                     </div>
@@ -488,7 +488,7 @@ export default function Example() {
 
           {/* Tabs */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Tabs</h2>
+            <h2 className="mb-4 text-2xl font-semibold">Tabs</h2>
             <Card>
               <CardContent className="p-6">
                 <Tabs defaultValue="account">
@@ -546,8 +546,8 @@ export default function Example() {
 
           {/* Interactive States */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Interactive States</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <h2 className="mb-4 text-2xl font-semibold">Interactive States</h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <Card>
                 <CardHeader>
                   <CardTitle>Normal State</CardTitle>
