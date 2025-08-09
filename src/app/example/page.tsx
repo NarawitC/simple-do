@@ -638,27 +638,13 @@ export default function Example() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Surface States</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="bg-surface rounded-lg border p-3">
-                    Surface
-                  </div>
-                  <div className="bg-surface-hover rounded-lg border p-3">
-                    Surface Hover
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
                   <CardTitle>Text Variations</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <div className="text-foreground">Primary Text</div>
-                  <div className="text-muted-foreground">Muted Text</div>
-                  <div className="text-text-muted">Custom Muted</div>
-                  <div className="text-text-disabled">Disabled Text</div>
+                  <div className="text-muted">muted Text</div>
+                  <div className="text-muted-foreground">
+                    Muted foreground Text
+                  </div>
                 </CardContent>
               </Card>
             </div>
