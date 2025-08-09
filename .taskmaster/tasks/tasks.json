@@ -5,7 +5,7 @@
         "id": 1,
         "title": "Setup Next.js Project with Dependencies",
         "description": "Initialize Next.js project with required dependencies including Tailwind CSS, shadcn/ui, Zustand, Framer Motion, and other specified libraries",
-        "details": "Create new Next.js project using latest version, install pnpm as package manager, configure Tailwind CSS with custom glassmorphism utilities, add shadcn/ui components, install Zustand for state management, Framer Motion for animations, React Hook Form, Zod v4, date-fns, and Fuse.js. Setup TypeScript configuration and ESLint rules.",
+        "details": "Create new Next.js project using latest version, install pnpm as package manager, configure Tailwind CSS with custom utilities, add shadcn/ui components, install Zustand for state management, Framer Motion for animations, React Hook Form, Zod v4, date-fns, and Fuse.js. Setup TypeScript configuration and ESLint rules.",
         "testStrategy": "Verify all dependencies install correctly, Next.js dev server runs without errors, and TypeScript compilation succeeds",
         "priority": "high",
         "dependencies": [],
@@ -32,20 +32,20 @@
           {
             "id": 3,
             "title": "Configure Tailwind CSS with Custom Utilities",
-            "description": "Setup Tailwind CSS configuration with custom glassmorphism utilities and design tokens",
+            "description": "Setup Tailwind CSS configuration with custom utilities and design tokens",
             "dependencies": ["1.2"],
-            "details": "Configure tailwind.config.js with custom glassmorphism utilities including backdrop-blur effects, transparency values, and glass card styles. Add custom color palette and spacing values. Setup CSS custom properties for consistent theming.",
+            "details": "Configure tailwind.config.js with custom utilities for modern card styles and design tokens. Add custom color palette and spacing values. Setup CSS custom properties in global.css for consistent theming.",
             "status": "pending",
-            "testStrategy": "Test glassmorphism utilities render correctly in browser and custom styles are applied properly"
+            "testStrategy": "Test custom utilities render correctly in browser using Tailwind and global.css styles"
           },
           {
             "id": 4,
             "title": "Setup shadcn/ui Component System",
             "description": "Initialize shadcn/ui and configure base components for the project",
             "dependencies": ["1.3"],
-            "details": "Run shadcn/ui init command to setup components.json configuration. Install essential base components like Button, Input, Card, and Dialog. Configure component styling to work with glassmorphism theme and ensure proper TypeScript integration.",
+            "details": "Run shadcn/ui init command to setup components.json configuration. Install essential base components like Button, Input, Card, and Dialog. Configure component styling to work with modern theme using Tailwind classes and global.css, ensuring proper TypeScript integration.",
             "status": "pending",
-            "testStrategy": "Verify shadcn/ui components render correctly with glassmorphism styling and TypeScript types are properly resolved"
+            "testStrategy": "Verify shadcn/ui components render correctly with modern Tailwind styling and TypeScript types are properly resolved"
           },
           {
             "id": 5,
@@ -60,10 +60,10 @@
       },
       {
         "id": 2,
-        "title": "Create Glassmorphism Design System",
-        "description": "Implement custom Tailwind CSS utilities and component styles for glassmorphism effects as specified in the PRD",
-        "details": "Create custom CSS classes for glass-card effects with backdrop-filter blur, rgba backgrounds, border-radius 20px, and inset shadows. Implement the exact CSS provided in PRD including ::before and ::after pseudo-elements for glass highlights. Setup color palette variables (#FF6B35, #1A1A2E, #0F3460) and gradient backgrounds. Create responsive utilities for mobile/desktop glassmorphism.",
-        "testStrategy": "Visual testing of glass effects in different browsers, verify backdrop-filter support, test performance on mobile devices",
+        "title": "Create Modern Design System",
+        "description": "Implement custom Tailwind CSS utilities and component styles using Tailwind classes combined with global.css as specified in the PRD",
+        "details": "Create modern card styling using Tailwind CSS utilities combined with custom global.css styles. Implement clean card designs with proper spacing, shadows, and border-radius. Setup color palette variables (#FF6B35, #1A1A2E, #0F3460) and theme-based backgrounds. Create responsive utilities for mobile/desktop layouts using Tailwind breakpoints.",
+        "testStrategy": "Visual testing of modern card styling across different browsers, verify responsive design, test performance on mobile devices",
         "priority": "high",
         "dependencies": [1],
         "status": "pending",
@@ -71,45 +71,45 @@
           {
             "id": 1,
             "title": "Setup Tailwind CSS Color Palette Variables",
-            "description": "Configure Tailwind CSS with custom color variables for the glassmorphism design system including primary (#FF6B35), secondary (#1A1A2E), accent (#0F3460), and glass colors",
+            "description": "Configure Tailwind CSS with custom color variables for the modern design system including primary (#FF6B35), secondary (#1A1A2E), accent (#0F3460), and theme colors",
             "dependencies": [],
-            "details": "Create or update tailwind.config.js with custom color palette. Add CSS custom properties for glass effects including rgba values for transparency. Setup gradient background variables for animated background (1a1a2e to 16213e). Configure color tokens that will be used across all glass components.",
+            "details": "Create or update tailwind.config.js with custom color palette. Add CSS custom properties in global.css for theme colors including rgba values for transparency. Setup gradient background variables for theme-based backgrounds. Configure color tokens that will be used across all modern components.",
             "status": "pending",
             "testStrategy": "Verify color variables are properly accessible in CSS classes, test color consistency across different browsers, validate contrast ratios meet accessibility standards"
           },
           {
             "id": 2,
-            "title": "Create Core Glass Card CSS Classes",
-            "description": "Implement the main .glass-card CSS class with backdrop-filter blur effects, rgba backgrounds, border-radius 20px, and inset shadows as specified in PRD",
+            "title": "Create Core Card CSS Classes",
+            "description": "Implement modern card classes using Tailwind utilities with clean styling, proper shadows, and rounded corners",
             "dependencies": ["2.1"],
-            "details": "Create custom CSS class matching the exact specifications: 240px×360px dimensions, rgba(255,255,255,0.4) background, backdrop-filter blur(10px), 20px border-radius, complex box-shadow with multiple inset shadows. Include webkit prefixes for Safari compatibility.",
+            "details": "Create modern card styling using Tailwind utilities combined with global.css. Implement clean card designs with configurable dimensions, theme-based backgrounds, rounded corners, and subtle shadows. Focus on accessibility and performance while maintaining visual appeal.",
             "status": "pending",
-            "testStrategy": "Test backdrop-filter support across browsers (Chrome, Firefox, Safari, Edge), verify glass effect visual appearance, validate performance impact on mobile devices"
+            "testStrategy": "Test card styling across different browsers, verify clean visual appearance, validate performance impact on mobile devices"
           },
           {
             "id": 3,
             "title": "Implement Glass Card Pseudo-elements",
             "description": "Add ::before and ::after pseudo-elements to create the glass highlight effects with gradient backgrounds",
             "dependencies": ["2.2"],
-            "details": "Implement ::before pseudo-element for top horizontal highlight with linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent). Add ::after pseudo-element for left vertical highlight with linear-gradient(180deg, rgba(255,255,255,0.8), transparent, rgba(255,255,255,0.3)). Position absolutely within glass-card container.",
+            "details": "Implement ::before pseudo-element for top horizontal highlight with linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent). Add ::after pseudo-element for left vertical highlight with linear-gradient(180deg, rgba(255,255,255,0.8), transparent, rgba(255,255,255,0.3)). Position absolutely within modern card container using Tailwind positioning classes and global.css custom properties.",
             "status": "pending",
             "testStrategy": "Verify pseudo-elements render correctly in all browsers, test gradient transitions are smooth, validate positioning doesn't break with content overflow"
           },
           {
             "id": 4,
-            "title": "Create Responsive Glassmorphism Utilities",
-            "description": "Build responsive utility classes for mobile and desktop glassmorphism variations with performance optimizations",
+            "title": "Create Responsive Modern Styling Utilities",
+            "description": "Build responsive utility classes for mobile and desktop modern styling variations with performance optimizations",
             "dependencies": ["2.2", "2.3"],
-            "details": "Create mobile-optimized glass utilities with reduced blur effects for better performance on 320-768px screens. Implement desktop variants with full glassmorphism effects for 1024px+ screens. Add Tailwind responsive prefixes and create component variants for different glass card sizes and use cases.",
+            "details": "Create mobile-optimized modern utilities with clean styling for better performance on 320-768px screens. Implement desktop variants with enhanced modern styling effects for 1024px+ screens. Add Tailwind responsive prefixes and create component variants for different modern card sizes and use cases.",
             "status": "pending",
             "testStrategy": "Test performance on low-end mobile devices, verify responsive breakpoints work correctly, validate smooth transitions between mobile and desktop variants"
           },
           {
             "id": 5,
-            "title": "Setup Glassmorphism Component Library",
-            "description": "Create reusable Tailwind utility classes and component base styles for consistent glassmorphism application across the app",
+            "title": "Setup Modern Styling Component Library",
+            "description": "Create reusable Tailwind utility classes and component base styles for consistent modern styling application across the app",
             "dependencies": ["2.2", "2.3", "2.4"],
-            "details": "Build comprehensive utility class library including glass-card, glass-button, glass-input, glass-modal variants. Create base component styles for common UI elements like task cards, navigation elements, and modal overlays. Document class usage patterns and establish design system guidelines for consistent implementation.",
+            "details": "Build comprehensive utility class library including modern-card, modern-button, modern-input, modern-modal variants. Create base component styles for common UI elements like task cards, navigation elements, and modal overlays. Document class usage patterns and establish design system guidelines for consistent modern styling implementation.",
             "status": "pending",
             "testStrategy": "Validate all utility classes work together without conflicts, test component combinations in various layouts, verify design consistency across different use cases"
           }
@@ -176,7 +176,7 @@
         "id": 4,
         "title": "Create Base Layout and Navigation",
         "description": "Implement responsive navigation structure with header, main navigation tabs, and footer as specified in the PRD",
-        "details": "Create main layout component with glassmorphism header containing app logo, search icon, and settings. Implement tab navigation (Today, Lists, Completed, Settings) with mobile bottom bar and desktop sidebar. Add responsive behavior for 320-768px (mobile) and 1024px+ (desktop). Include floating action button for quick task creation.",
+        "details": "Create main layout component with modern styled header containing app logo, search icon, and settings. Implement tab navigation (Today, Lists, Completed, Settings) with mobile bottom bar and desktop sidebar. Add responsive behavior for 320-768px (mobile) and 1024px+ (desktop). Include floating action button for quick task creation.",
         "testStrategy": "Test responsive breakpoints, verify navigation accessibility, validate mobile touch targets meet 44px minimum",
         "priority": "high",
         "dependencies": [2, 3],
@@ -193,30 +193,30 @@
           },
           {
             "id": 2,
-            "title": "Implement Glassmorphism Header with Logo and Actions",
-            "description": "Create the top header bar with glassmorphism styling containing app logo, search icon, and settings button",
+            "title": "Implement Modern Header with Logo and Actions",
+            "description": "Create the top header bar with modern styling containing app logo, search icon, and settings button",
             "dependencies": ["4.1"],
-            "details": "Build header component with glassmorphism glass-card styling from design system. Include app logo/title on left side, search icon and settings button on right side. Apply backdrop-filter blur effects, proper spacing, and mobile-responsive behavior. Ensure header stays fixed at top during scroll.",
+            "details": "Build header component with modern card styling from design system. Include app logo/title on left side, search icon and settings button on right side. Apply clean modern effects using Tailwind utilities and global.css, proper spacing, and mobile-responsive behavior. Ensure header stays fixed at top during scroll.",
             "status": "pending",
-            "testStrategy": "Test glassmorphism effects render properly, verify responsive behavior on mobile/desktop, validate icon accessibility and touch targets"
+            "testStrategy": "Test modern styling effects render properly, verify responsive behavior on mobile/desktop, validate icon accessibility and touch targets"
           },
           {
             "id": 3,
             "title": "Build Responsive Tab Navigation System",
             "description": "Create tab navigation for Today, Lists, Completed, and Settings with mobile bottom bar and desktop sidebar layouts",
             "dependencies": ["4.1"],
-            "details": "Implement navigation component that switches between mobile bottom tab bar (320-768px) and desktop sidebar (1024px+). Include navigation items for Today, Lists, Completed, and Settings with active state indicators. Use glassmorphism styling and ensure proper touch target sizes (44px minimum) for mobile.",
+            "details": "Implement navigation component that switches between mobile bottom tab bar (320-768px) and desktop sidebar (1024px+). Include navigation items for Today, Lists, Completed, and Settings with active state indicators. Use modern styling with Tailwind classes and ensure proper touch target sizes (44px minimum) for mobile.",
             "status": "pending",
             "testStrategy": "Test responsive breakpoint transitions, verify active state indicators, validate touch target sizes meet accessibility requirements"
           },
           {
             "id": 4,
             "title": "Create Floating Action Button Component",
-            "description": "Build floating action button for quick task creation with glassmorphism styling and proper positioning",
+            "description": "Build floating action button for quick task creation with modern styling and proper positioning",
             "dependencies": ["4.1"],
-            "details": "Create FAB component with glassmorphism glass-card styling positioned as overlay. Include proper z-index layering, smooth hover/active states, and responsive positioning. Position button in bottom-right corner with appropriate margins from screen edges. Add accessibility attributes and keyboard navigation support.",
+            "details": "Create FAB component with modern card styling positioned as overlay. Include proper z-index layering, smooth hover/active states, and responsive positioning. Position button in bottom-right corner with appropriate margins from screen edges. Add accessibility attributes and keyboard navigation support.",
             "status": "pending",
-            "testStrategy": "Test button positioning across screen sizes, verify glassmorphism effects, validate accessibility and keyboard navigation"
+            "testStrategy": "Test button positioning across screen sizes, verify modern styling effects, validate accessibility and keyboard navigation"
           },
           {
             "id": 5,
@@ -290,7 +290,7 @@
         "id": 6,
         "title": "Create Quick Task Capture Component",
         "description": "Build floating action button with expandable glass input modal for instant task creation (REQ-001)",
-        "details": "Create floating action button with glassmorphism styling that expands to reveal quick-add input modal. Implement auto-focus on open, Ctrl/Cmd+Enter to save, click outside to close. Add optional due date picker and category assignment. Use Framer Motion for smooth expand/collapse animations. Integrate with Zustand store for task creation.",
+        "details": "Create floating action button with modern styling that expands to reveal quick-add input modal. Implement auto-focus on open, Ctrl/Cmd+Enter to save, click outside to close. Add optional due date picker and category assignment. Use Framer Motion for smooth expand/collapse animations. Integrate with Zustand store for task creation.",
         "testStrategy": "Test keyboard shortcuts, verify smooth animations across devices, validate form submission and error states",
         "priority": "high",
         "dependencies": [4, 5],
@@ -299,11 +299,11 @@
           {
             "id": 1,
             "title": "Create Floating Action Button Component",
-            "description": "Build the base floating action button with glassmorphism styling and positioning",
+            "description": "Build the base floating action button with modern styling and positioning",
             "dependencies": [],
-            "details": "Create FloatingActionButton component with fixed positioning (bottom-right corner), glassmorphism styling using the design system, circular button with plus icon, proper z-index layering, and mobile/desktop responsive sizing. Apply glass-card effects with backdrop-filter blur and rgba backgrounds.",
+            "details": "Create FloatingActionButton component with fixed positioning (bottom-right corner), modern styling using the design system, circular button with plus icon, proper z-index layering, and mobile/desktop responsive sizing. Apply modern card effects with Tailwind utilities and global.css custom properties.",
             "status": "pending",
-            "testStrategy": "Test button positioning across screen sizes, verify glassmorphism effects render correctly, validate z-index stacking with other components"
+            "testStrategy": "Test button positioning across screen sizes, verify modern styling effects render correctly, validate z-index stacking with other components"
           },
           {
             "id": 2,
@@ -328,7 +328,7 @@
             "title": "Add Due Date and Category Features",
             "description": "Integrate optional due date picker and category assignment",
             "dependencies": ["6.3"],
-            "details": "Add optional due date picker component with calendar interface, category dropdown/selector for task organization, and form state management for these additional fields. Ensure consistent styling with glassmorphism design system.",
+            "details": "Add optional due date picker component with calendar interface, category dropdown/selector for task organization, and form state management for these additional fields. Ensure consistent styling with modern design system using Tailwind classes and global.css.",
             "status": "pending",
             "testStrategy": "Test date picker functionality, verify category selection behavior, validate optional field handling in form submission"
           },
@@ -347,7 +347,7 @@
         "id": 7,
         "title": "Build Task List Component with Glassmorphism",
         "description": "Create beautiful task list display with glass cards, check animations, and drag-and-drop reordering (REQ-002, REQ-003, REQ-004)",
-        "details": "Implement task list component using glass-card styling with backdrop-filter effects. Create animated checkboxes with satisfying micro-interactions using Framer Motion. Add drag-and-drop functionality for task reordering with visual feedback. Include smooth animations for task completion and 'Done' button reveal. Optimize for performance with virtualization if needed.",
+        "details": "Implement task list component using modern card styling with clean effects. Create animated checkboxes with satisfying micro-interactions using Framer Motion. Add drag-and-drop functionality for task reordering with visual feedback. Include smooth animations for task completion and 'Done' button reveal. Optimize for performance with virtualization if needed.",
         "testStrategy": "Test drag-and-drop on touch devices, verify animation performance, validate accessibility for screen readers",
         "priority": "high",
         "dependencies": [5, 6],
@@ -356,11 +356,11 @@
           {
             "id": 1,
             "title": "Create Glass Card Base Component",
-            "description": "Build reusable glass card component with backdrop-filter effects and glassmorphism styling",
+            "description": "Build reusable modern card component with clean styling effects using Tailwind + global.css approach",
             "dependencies": [],
-            "details": "Create a base GlassCard component with configurable backdrop-filter blur, border-radius, and transparency effects. Include hover states and proper shadow effects. Support different sizes and padding variants. Ensure cross-browser compatibility for backdrop-filter property.",
+            "details": "Create a base ModernCard component with configurable styling, border-radius, and transparency effects using Tailwind utilities and global.css. Include hover states and proper shadow effects. Support different sizes and padding variants. Ensure cross-browser compatibility for modern styling effects.",
             "status": "pending",
-            "testStrategy": "Test backdrop-filter support across browsers, verify hover animations, validate component prop variations"
+            "testStrategy": "Test modern styling support across browsers, verify hover animations, validate component prop variations"
           },
           {
             "id": 2,
@@ -404,7 +404,7 @@
         "id": 8,
         "title": "Implement Category Management System",
         "description": "Create category creation, editing, and assignment functionality with predefined and custom categories (REQ-005, REQ-006)",
-        "details": "Setup predefined categories (Work, Personal, Shopping, Health) with distinct colors. Implement custom category creation with 10 category limit validation. Create category management UI with glass card design. Add category assignment during task creation and editing. Implement category persistence in local storage.",
+        "details": "Setup predefined categories (Work, Personal, Shopping, Health) with distinct colors. Implement custom category creation with 10 category limit validation. Create category management UI with modern card design. Add category assignment during task creation and editing. Implement category persistence in local storage.",
         "testStrategy": "Test category limit enforcement, verify category color assignments, validate category persistence and restoration",
         "priority": "medium",
         "dependencies": [5],
@@ -433,9 +433,9 @@
             "title": "Create category management UI components",
             "description": "Build category management interface with glass card design for viewing, creating, and editing categories",
             "dependencies": ["8.1"],
-            "details": "Design and implement category management UI with glassmorphism styling. Include category list view with color indicators, add/edit category forms, and delete functionality. Use glass card components for consistent design.",
+            "details": "Design and implement category management UI with modern styling using Tailwind classes and global.css. Include category list view with color indicators, add/edit category forms, and delete functionality. Use modern card components for consistent design.",
             "status": "pending",
-            "testStrategy": "Test UI responsiveness, verify glassmorphism styling, validate form interactions and visual feedback"
+            "testStrategy": "Test UI responsiveness, verify modern styling, validate form interactions and visual feedback"
           },
           {
             "id": 4,
@@ -461,7 +461,7 @@
         "id": 9,
         "title": "Build Category Filtering System",
         "description": "Create filter view functionality to display tasks by selected categories (REQ-007)",
-        "details": "Implement tag-based filtering system with glassmorphism filter buttons. Create filtered task views showing only selected category tasks. Add 'All Categories' option and multi-select filtering capability. Integrate with Zustand store for filter state management. Include smooth transitions when switching between filtered views.",
+        "details": "Implement tag-based filtering system with modern filter buttons. Create filtered task views showing only selected category tasks. Add 'All Categories' option and multi-select filtering capability. Integrate with Zustand store for filter state management. Include smooth transitions when switching between filtered views.",
         "testStrategy": "Test filter combinations, verify task count accuracy in filtered views, validate filter state persistence",
         "priority": "medium",
         "dependencies": [7, 8],
@@ -470,9 +470,9 @@
           {
             "id": 1,
             "title": "Create Filter Button Component with Glassmorphism Design",
-            "description": "Build reusable filter button component with glassmorphism styling for category selection",
+            "description": "Build reusable filter button component with modern styling for category selection",
             "dependencies": [],
-            "details": "Create FilterButton component with glass morphism effect using backdrop-blur and semi-transparent backgrounds. Include active/inactive states with smooth color transitions. Support category colors and 'All Categories' styling. Implement hover and focus states with accessibility features.",
+            "details": "Create FilterButton component with modern styling effects using Tailwind utilities and global.css. Include active/inactive states with smooth color transitions. Support category colors and 'All Categories' styling. Implement hover and focus states with accessibility features.",
             "status": "pending",
             "testStrategy": "Test button styling variations, verify accessibility compliance, validate smooth state transitions"
           },
@@ -529,7 +529,7 @@
             "title": "Create Date Picker Component",
             "description": "Build a reusable date picker component using date-fns library for date selection and manipulation",
             "dependencies": [],
-            "details": "Create a custom date picker component with date-fns integration for parsing, formatting, and validation. Include calendar UI with glassmorphism styling, keyboard navigation support, and timezone handling. Implement date selection validation and error states.",
+            "details": "Create a custom date picker component with date-fns integration for parsing, formatting, and validation. Include calendar UI with modern styling using Tailwind classes and global.css, keyboard navigation support, and timezone handling. Implement date selection validation and error states.",
             "status": "pending",
             "testStrategy": "Test date selection across different timezones, verify date parsing accuracy, validate keyboard navigation and accessibility"
           },
@@ -574,8 +574,8 @@
       {
         "id": 11,
         "title": "Implement Search Functionality",
-        "description": "Create instant search across all tasks with glassmorphism overlay (REQ-008, REQ-009)",
-        "details": "Implement search overlay with glassmorphism styling triggered by Cmd/Ctrl+K or search icon. Use Fuse.js for fuzzy search functionality across task content and titles. Add debounced search implementation for real-time results. Create empty state handling for no results and search result pagination for performance.",
+        "description": "Create instant search across all tasks with modern overlay (REQ-008, REQ-009)",
+        "details": "Implement search overlay with modern styling triggered by Cmd/Ctrl+K or search icon. Use Fuse.js for fuzzy search functionality across task content and titles. Add debounced search implementation for real-time results. Create empty state handling for no results and search result pagination for performance.",
         "testStrategy": "Test search accuracy and performance with large datasets, verify keyboard shortcuts, validate fuzzy search results relevance",
         "priority": "low",
         "dependencies": [7],
@@ -583,12 +583,12 @@
         "subtasks": [
           {
             "id": 1,
-            "title": "Create search overlay component with glassmorphism styling",
-            "description": "Build the visual search overlay component with glassmorphism effects and responsive design",
+            "title": "Create search overlay component with modern styling",
+            "description": "Build the visual search overlay component with modern styling effects and responsive design",
             "dependencies": [],
-            "details": "Create SearchOverlay component with glassmorphism backdrop blur, semi-transparent background, and modern styling. Implement responsive design that adapts to different screen sizes. Add smooth enter/exit animations and proper z-index layering to ensure overlay appears above all other content.",
+            "details": "Create SearchOverlay component with modern backdrop effects, semi-transparent background, and clean modern styling using Tailwind utilities and global.css. Implement responsive design that adapts to different screen sizes. Add smooth enter/exit animations and proper z-index layering to ensure overlay appears above all other content.",
             "status": "pending",
-            "testStrategy": "Test overlay appearance across different screen sizes, verify glassmorphism effects render correctly, validate z-index stacking and animations"
+            "testStrategy": "Test overlay appearance across different screen sizes, verify modern styling effects render correctly, validate z-index stacking and animations"
           },
           {
             "id": 2,
@@ -632,7 +632,7 @@
         "id": 12,
         "title": "Create Main Dashboard (Today View)",
         "description": "Build primary workspace showing today's tasks with welcome header and quick access features",
-        "details": "Create Today view dashboard with welcome header displaying current date, quick add input integration, and today's tasks grouped by time/category. Implement task prioritization display and quick access to other lists. Add glassmorphism styling consistent with design system and responsive layout for mobile/desktop.",
+        "details": "Create Today view dashboard with welcome header displaying current date, quick add input integration, and today's tasks grouped by time/category. Implement task prioritization display and quick access to other lists. Add modern styling consistent with design system and responsive layout for mobile/desktop.",
         "testStrategy": "Test date display accuracy, verify task grouping logic, validate responsive behavior across screen sizes",
         "priority": "high",
         "dependencies": [7, 9, 10],
@@ -643,9 +643,9 @@
             "title": "Create Welcome Header Component",
             "description": "Build welcome header with current date display and personalized greeting",
             "dependencies": [],
-            "details": "Implement a welcome header component that displays current date in readable format, personalized greeting message, and apply glassmorphism styling. Include responsive behavior for mobile and desktop layouts with proper typography and spacing.",
+            "details": "Implement a welcome header component that displays current date in readable format, personalized greeting message, and apply modern styling using Tailwind classes and global.css. Include responsive behavior for mobile and desktop layouts with proper typography and spacing.",
             "status": "pending",
-            "testStrategy": "Test date formatting accuracy, verify responsive behavior across screen sizes, validate glassmorphism visual effects"
+            "testStrategy": "Test date formatting accuracy, verify responsive behavior across screen sizes, validate modern visual effects"
           },
           {
             "id": 2,
@@ -689,7 +689,7 @@
         "id": 13,
         "title": "Build All Lists View",
         "description": "Create overview page showing all task categories and custom lists in grid layout",
-        "details": "Implement grid layout of glass cards for each category with task counts and category colors. Add create new category floating action button. Include search and filter options for category management. Display category statistics and quick preview of tasks within each category.",
+        "details": "Implement grid layout of modern cards for each category with task counts and category colors. Add create new category floating action button. Include search and filter options for category management. Display category statistics and quick preview of tasks within each category.",
         "testStrategy": "Test grid layout responsiveness, verify category statistics accuracy, validate category creation workflow",
         "priority": "medium",
         "dependencies": [8, 9],
@@ -700,7 +700,7 @@
             "title": "Create Lists Overview Page Structure",
             "description": "Set up the basic page component structure with routing and main container layout",
             "dependencies": [],
-            "details": "Create the AllListsView component with proper routing setup. Implement the main page container with glassmorphism background and responsive layout structure. Set up the page header with title and navigation breadcrumbs.",
+            "details": "Create the AllListsView component with proper routing setup. Implement the main page container with modern background styling and responsive layout structure. Set up the page header with title and navigation breadcrumbs.",
             "status": "pending",
             "testStrategy": "Test page routing functionality, verify responsive container layout, validate page accessibility structure"
           },
@@ -716,18 +716,18 @@
           {
             "id": 3,
             "title": "Build Category Glass Cards",
-            "description": "Create individual category card components with glassmorphism styling, task counts, and category colors",
+            "description": "Create individual category card components with modern styling, task counts, and category colors",
             "dependencies": ["13.2"],
-            "details": "Design and implement glass card components with backdrop-filter blur effects, category-specific color accents, task count badges, and subtle hover animations. Include category icons, names, and quick preview of recent tasks within each card.",
+            "details": "Design and implement modern card components with clean styling effects using Tailwind utilities and global.css, category-specific color accents, task count badges, and subtle hover animations. Include category icons, names, and quick preview of recent tasks within each card.",
             "status": "pending",
-            "testStrategy": "Test glassmorphism effects across browsers, verify color theming accuracy, validate hover states and card interactions"
+            "testStrategy": "Test modern styling effects across browsers, verify color theming accuracy, validate hover states and card interactions"
           },
           {
             "id": 4,
             "title": "Add Search and Filter Controls",
             "description": "Implement search input and filter options for category management with real-time updates",
             "dependencies": ["13.3"],
-            "details": "Create search input with glassmorphism styling for real-time category filtering. Implement filter dropdown for sorting by task count, creation date, or alphabetical order. Add filter chips for active filters with clear functionality.",
+            "details": "Create search input with modern styling for real-time category filtering. Implement filter dropdown for sorting by task count, creation date, or alphabetical order. Add filter chips for active filters with clear functionality.",
             "status": "pending",
             "testStrategy": "Test real-time search functionality, verify filter accuracy, validate keyboard navigation and accessibility"
           },
@@ -736,7 +736,7 @@
             "title": "Integrate Create Category FAB",
             "description": "Add floating action button for creating new categories with modal integration",
             "dependencies": ["13.4"],
-            "details": "Implement floating action button with glassmorphism styling positioned in bottom-right corner. Connect to category creation modal with smooth animations. Ensure FAB remains accessible and doesn't interfere with grid scrolling or mobile navigation.",
+            "details": "Implement floating action button with modern styling positioned in bottom-right corner. Connect to category creation modal with smooth animations. Ensure FAB remains accessible and doesn't interfere with grid scrolling or mobile navigation.",
             "status": "pending",
             "testStrategy": "Test FAB positioning across screen sizes, verify modal integration, validate touch targets and accessibility compliance"
           }
@@ -746,7 +746,7 @@
         "id": 14,
         "title": "Create Completed Tasks View",
         "description": "Build interface for reviewing and restoring completed items with chronological organization",
-        "details": "Create completed tasks page showing chronological list of finished items with completion dates. Implement restore functionality to move tasks back to active state. Add bulk actions for clearing old completed tasks. Include search and filter capabilities for completed items with glassmorphism styling.",
+        "details": "Create completed tasks page showing chronological list of finished items with completion dates. Implement restore functionality to move tasks back to active state. Add bulk actions for clearing old completed tasks. Include search and filter capabilities for completed items with modern styling.",
         "testStrategy": "Test task restoration functionality, verify chronological sorting accuracy, validate bulk action performance",
         "priority": "low",
         "dependencies": [7],
@@ -757,7 +757,7 @@
             "title": "Create Completed Tasks Page Component",
             "description": "Build the main page component for displaying completed tasks with proper routing and layout structure",
             "dependencies": [],
-            "details": "Create CompletedTasksPage component with proper Next.js page routing. Implement basic page structure with glassmorphism container, header section, and main content area. Set up proper TypeScript interfaces for completed task data and page props.",
+            "details": "Create CompletedTasksPage component with proper Next.js page routing. Implement basic page structure with modern styled container, header section, and main content area. Set up proper TypeScript interfaces for completed task data and page props.",
             "status": "pending",
             "testStrategy": "Test page routing, verify component renders correctly, validate TypeScript interfaces"
           },
@@ -766,7 +766,7 @@
             "title": "Implement Chronological Task List Display",
             "description": "Build the main list component showing completed tasks in chronological order with completion dates",
             "dependencies": ["14.1"],
-            "details": "Create CompletedTasksList component that fetches and displays completed tasks sorted by completion date (most recent first). Include task title, completion date/time, and original due date if applicable. Apply glassmorphism styling consistent with design system.",
+            "details": "Create CompletedTasksList component that fetches and displays completed tasks sorted by completion date (most recent first). Include task title, completion date/time, and original due date if applicable. Apply modern styling consistent with design system using Tailwind classes and global.css.",
             "status": "pending",
             "testStrategy": "Test chronological sorting accuracy, verify date formatting, validate list rendering performance"
           },
@@ -803,7 +803,7 @@
         "id": 15,
         "title": "Implement Settings and Theme Management",
         "description": "Create settings page with theme switching, preferences, and app configuration options",
-        "details": "Build settings page with glassmorphism styling including dark/light theme toggle, notification preferences, and data management options. Implement theme switching with smooth transitions and system preference detection. Add export/import functionality for local storage data backup. Include privacy policy and support links as specified in footer requirements.",
+        "details": "Build settings page with modern styling including dark/light theme toggle, notification preferences, and data management options. Implement theme switching with smooth transitions and system preference detection. Add export/import functionality for local storage data backup. Include privacy policy and support links as specified in footer requirements.",
         "testStrategy": "Test theme switching animations, verify settings persistence, validate data export/import functionality",
         "priority": "low",
         "dependencies": [4],
@@ -812,11 +812,11 @@
           {
             "id": 1,
             "title": "Create Settings Page Layout and Navigation",
-            "description": "Build the main settings page component with glassmorphism styling and navigation structure",
+            "description": "Build the main settings page component with modern styling and navigation structure",
             "dependencies": [],
-            "details": "Create SettingsPage component with glassmorphism card design. Implement navigation structure for different settings sections (Theme, Notifications, Data Management, Privacy). Add proper routing and page transitions. Include back navigation to main app.",
+            "details": "Create SettingsPage component with modern card design using Tailwind utilities and global.css. Implement navigation structure for different settings sections (Theme, Notifications, Data Management, Privacy). Add proper routing and page transitions. Include back navigation to main app.",
             "status": "pending",
-            "testStrategy": "Test page rendering, navigation between sections, glassmorphism styling consistency, responsive design across devices"
+            "testStrategy": "Test page rendering, navigation between sections, modern styling consistency, responsive design across devices"
           },
           {
             "id": 2,
