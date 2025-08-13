@@ -91,57 +91,39 @@
       {
         "id": 3,
         "title": "Setup State Management with Zustand",
-        "description": "Create global state store using Zustand for tasks, categories, and application settings",
-        "details": "Create Zustand store with slices for: tasks (CRUD operations), categories (predefined and custom), user preferences (theme, view settings), and search state. Implement local storage persistence middleware. Define TypeScript interfaces for Task, Category, and AppState. Setup actions for task creation, completion, deletion, and reordering.",
-        "testStrategy": "Unit tests for store actions, verify state persistence across browser sessions, test concurrent state updates",
-        "priority": "high",
-        "dependencies": [1],
+        "description": "Create global state store using Zustand for basic task management operations",
         "status": "pending",
+        "dependencies": [1],
+        "priority": "high",
+        "details": "Create simple Zustand store for task CRUD operations. Define TypeScript interfaces for Task and AppState. Setup actions for task creation, completion, deletion, and updating.",
+        "testStrategy": "Unit tests for store actions, test concurrent state updates, verify immutable state mutations",
         "subtasks": [
           {
             "id": 1,
             "title": "Define TypeScript interfaces and types",
-            "description": "Create comprehensive TypeScript interfaces for Task, Category, AppState, and related types used throughout the Zustand store",
-            "dependencies": [],
-            "details": "Define Task interface with id, title, description, completed, priority, dueDate, categoryId, createdAt, updatedAt fields. Create Category interface with id, name, color, isCustom properties. Define AppState interface encompassing tasks, categories, user preferences (theme, view settings), and search state. Include utility types for task filters, sorting options, and store actions.",
+            "description": "Create TypeScript interfaces for Task and AppState used throughout the Zustand store",
             "status": "pending",
-            "testStrategy": "Validate TypeScript compilation, verify interface completeness covers all use cases, test type safety with mock data"
+            "dependencies": [],
+            "details": "Define Task interface with id, title, description, completed, dueDate, createdAt, updatedAt fields. Define AppState interface for the store containing tasks array and related actions. Remove Category, priority, and preference-related types.",
+            "testStrategy": "Validate TypeScript compilation, verify interface completeness covers basic task use cases, test type safety with mock data"
           },
           {
             "id": 2,
-            "title": "Setup Zustand store structure with slices",
-            "description": "Create the main Zustand store with separate slices for tasks, categories, user preferences, and search functionality",
-            "dependencies": ["3.1"],
-            "details": "Initialize Zustand store using createWithEqualityFn for performance. Create separate slices: taskSlice for CRUD operations, categorySlice for predefined and custom categories, preferencesSlice for theme and view settings, searchSlice for search state. Combine slices using Zustand's slice pattern with proper TypeScript typing.",
+            "title": "Setup basic Zustand store structure",
+            "description": "Create the main Zustand store for task management without complex slicing",
             "status": "pending",
-            "testStrategy": "Unit tests for store initialization, verify slice isolation, test store state structure matches TypeScript interfaces"
+            "dependencies": [1],
+            "details": "Initialize simple Zustand store using createWithEqualityFn for performance. Create single store containing tasks array and actions. Remove category slice, preferences slice, and search slice complexity.",
+            "testStrategy": "Unit tests for store initialization, verify store state structure matches TypeScript interfaces"
           },
           {
             "id": 3,
-            "title": "Implement task CRUD operations and actions",
-            "description": "Create all task-related actions including creation, completion, deletion, reordering, and update operations",
-            "dependencies": ["3.2"],
-            "details": "Implement addTask action with validation and ID generation. Create updateTask for editing existing tasks. Add toggleTaskCompletion for marking done/undone. Implement deleteTask with confirmation. Create reorderTasks action for drag-and-drop functionality. Include bulk operations for multiple task management.",
+            "title": "Implement basic task CRUD operations",
+            "description": "Create essential task-related actions including creation, completion, deletion, and update operations",
             "status": "pending",
+            "dependencies": [2],
+            "details": "Implement addTask action with validation and ID generation. Create updateTask for editing existing tasks. Add toggleTaskCompletion for marking done/undone. Implement deleteTask action. Remove reordering, bulk operations, and priority-related features.",
             "testStrategy": "Unit tests for each CRUD operation, verify state mutations are immutable, test edge cases like duplicate IDs and invalid operations"
-          },
-          {
-            "id": 4,
-            "title": "Setup local storage persistence middleware",
-            "description": "Implement Zustand persistence middleware to save and restore state from localStorage across browser sessions",
-            "dependencies": ["3.3"],
-            "details": "Configure Zustand persist middleware with localStorage adapter. Define which parts of state to persist (exclude search state, include tasks/categories/preferences). Implement state migration for schema changes. Add error handling for localStorage failures and quota exceeded scenarios. Configure debounced saves to prevent excessive writes.",
-            "status": "pending",
-            "testStrategy": "Test state persistence across browser sessions, verify migration handles schema changes, validate error handling for storage failures"
-          },
-          {
-            "id": 5,
-            "title": "Create category management and user preferences actions",
-            "description": "Implement actions for managing categories (predefined and custom) and user preference settings",
-            "dependencies": ["3.2"],
-            "details": "Create predefined categories (Work, Personal, Health, etc.) with default colors. Implement addCustomCategory, updateCategory, deleteCategory actions. Create preference actions for theme switching (light/dark), view settings (list/grid), and other UI preferences. Include validation for category names and color values.",
-            "status": "pending",
-            "testStrategy": "Test category CRUD operations, verify predefined categories are properly initialized, validate preference persistence and theme switching"
           }
         ]
       },
@@ -205,8 +187,8 @@
       {
         "id": 5,
         "title": "Implement Task Data Models and Validation",
-        "description": "Create TypeScript interfaces and Zod schemas for task and category data structures",
-        "details": "Define Task interface with id, title, description, completed, dueDate, categoryId, createdAt, updatedAt fields. Create Category interface with id, name, color, isCustom properties. Implement Zod validation schemas for form inputs and API data. Setup data transformation utilities and type guards for runtime validation.",
+        "description": "Create TypeScript interfaces and Zod schemas for simplified task data structures without categories",
+        "details": "Define Task interface with id, title, description, completed, dueDate, createdAt, updatedAt fields. Remove Category interface and categoryId field. Implement Zod validation schemas for form inputs and API data. Setup data transformation utilities and type guards for runtime validation. Focus on in-memory state management without local storage persistence.",
         "testStrategy": "Unit tests for validation schemas, test edge cases and invalid data handling, verify TypeScript type safety",
         "priority": "medium",
         "dependencies": [3],
@@ -215,45 +197,45 @@
           {
             "id": 1,
             "title": "Define Core TypeScript Interfaces",
-            "description": "Create Task and Category interfaces with proper type definitions",
+            "description": "Create Task interface with simplified properties without categories",
             "dependencies": [],
-            "details": "Define Task interface with id (string), title (string), description (string), completed (boolean), dueDate (Date | null), categoryId (string), createdAt (Date), updatedAt (Date) fields. Create Category interface with id (string), name (string), color (string), isCustom (boolean) properties. Export interfaces from a centralized types file.",
+            "details": "Define Task interface with id (string), title (string), description (string), completed (boolean), dueDate (Date | null), createdAt (Date), updatedAt (Date) fields. Remove categoryId field and Category interface. Export interfaces from a centralized types file.",
             "status": "pending",
             "testStrategy": "Verify TypeScript compilation and type checking for all interface properties"
           },
           {
             "id": 2,
             "title": "Implement Zod Validation Schemas",
-            "description": "Create comprehensive Zod schemas for task and category validation",
+            "description": "Create comprehensive Zod schemas for task validation without category fields",
             "dependencies": ["5.1"],
-            "details": "Implement TaskSchema with string validation for title/description, boolean for completed, optional date for dueDate, and string for categoryId. Create CategorySchema with name length validation, color hex validation, and boolean for isCustom. Include proper error messages for validation failures.",
+            "details": "Implement TaskSchema with string validation for title/description, boolean for completed, and optional date for dueDate. Remove CategorySchema and category-related validation. Include proper error messages for validation failures.",
             "status": "pending",
             "testStrategy": "Unit tests for schema validation with valid and invalid data inputs, test edge cases like empty strings and invalid dates"
           },
           {
             "id": 3,
             "title": "Create Form Input Validation Schemas",
-            "description": "Develop specific Zod schemas for form inputs and user interactions",
+            "description": "Develop specific Zod schemas for form inputs without category selection",
             "dependencies": ["5.2"],
-            "details": "Create TaskCreateSchema and TaskUpdateSchema for form validation with required field validation and input sanitization. Implement CategoryCreateSchema with name uniqueness validation and color format validation. Add validation for partial updates and form state management.",
+            "details": "Create TaskCreateSchema and TaskUpdateSchema for form validation with required field validation and input sanitization. Remove category-related validation schemas. Add validation for partial updates and form state management.",
             "status": "pending",
             "testStrategy": "Test form validation with user input scenarios, verify error message display and field validation states"
           },
           {
             "id": 4,
             "title": "Build Data Transformation Utilities",
-            "description": "Create utility functions for data parsing, serialization, and transformation",
+            "description": "Create utility functions for data parsing and transformation without category processing",
             "dependencies": ["5.1", "5.2"],
-            "details": "Implement parseTask and parseCategory functions using Zod schemas for safe data parsing. Create serializeTask and serializeCategory for API/storage serialization. Add utility functions for date handling, ID generation, and data sanitization with proper error handling.",
+            "details": "Implement parseTask function using Zod schemas for safe data parsing. Remove category-related parsing functions. Add utility functions for date handling, ID generation, and data sanitization with proper error handling.",
             "status": "pending",
             "testStrategy": "Test data transformation with various input formats, verify error handling for malformed data"
           },
           {
             "id": 5,
             "title": "Setup Runtime Type Guards and Validation",
-            "description": "Implement type guards and runtime validation functions for data integrity",
+            "description": "Implement type guards for task data without category validation",
             "dependencies": ["5.2", "5.4"],
-            "details": "Create isTask and isCategory type guard functions for runtime type checking. Implement validateTaskArray and validateCategoryArray for bulk validation. Add runtime validation middleware for API responses and local storage data with fallback handling for invalid data.",
+            "details": "Create isTask type guard function for runtime type checking. Remove category-related type guards. Implement validateTaskArray for bulk validation. Add runtime validation for API responses with fallback handling for invalid data.",
             "status": "pending",
             "testStrategy": "Test type guards with valid and invalid data, verify runtime validation catches data corruption and provides appropriate fallbacks"
           }
@@ -262,8 +244,8 @@
       {
         "id": 6,
         "title": "Create Quick Task Capture Component",
-        "description": "Build floating action button with expandable glass input modal for instant task creation (REQ-001)",
-        "details": "Create floating action button with modern styling that expands to reveal quick-add input modal. Implement auto-focus on open, Ctrl/Cmd+Enter to save, click outside to close. Add optional due date picker and category assignment. Use Framer Motion for smooth expand/collapse animations. Integrate with Zustand store for task creation.",
+        "description": "Build floating action button with expandable input modal for instant task creation without category selection",
+        "details": "Create floating action button with modern styling that expands to reveal quick-add input modal. Implement auto-focus on open, Ctrl/Cmd+Enter to save, click outside to close. Add optional due date picker. Remove category assignment functionality. Use Framer Motion for smooth expand/collapse animations. Integrate with Zustand store for task creation.",
         "testStrategy": "Test keyboard shortcuts, verify smooth animations across devices, validate form submission and error states",
         "priority": "high",
         "dependencies": [4, 5],
@@ -298,19 +280,19 @@
           },
           {
             "id": 4,
-            "title": "Add Due Date and Category Features",
-            "description": "Integrate optional due date picker and category assignment",
+            "title": "Add Due Date Feature",
+            "description": "Integrate optional due date picker without category selection",
             "dependencies": ["6.3"],
-            "details": "Add optional due date picker component with calendar interface, category dropdown/selector for task organization, and form state management for these additional fields. Ensure consistent styling with modern design system using Tailwind classes and global.css.",
+            "details": "Add optional due date picker component with calendar interface and form state management. Remove category dropdown functionality. Ensure consistent styling with modern design system using Tailwind classes and global.css.",
             "status": "pending",
-            "testStrategy": "Test date picker functionality, verify category selection behavior, validate optional field handling in form submission"
+            "testStrategy": "Test date picker functionality, validate optional field handling in form submission"
           },
           {
             "id": 5,
             "title": "Integrate with Zustand Store",
-            "description": "Connect component to Zustand store for task creation and state management",
+            "description": "Connect component to Zustand store for simplified task creation",
             "dependencies": ["6.4"],
-            "details": "Implement integration with Zustand store for task creation, handle form submission to store, manage loading states during task creation, and implement success/error feedback. Ensure proper state updates and component re-rendering after task creation.",
+            "details": "Implement integration with Zustand store for task creation without category assignment, handle form submission to store, manage loading states during task creation, and implement success/error feedback. Ensure proper state updates and component re-rendering after task creation.",
             "status": "pending",
             "testStrategy": "Test task creation flow end-to-end, verify store state updates, validate error handling for failed task creation"
           }
@@ -318,9 +300,9 @@
       },
       {
         "id": 7,
-        "title": "Build Task List Component with Glassmorphism",
-        "description": "Create beautiful task list display with glass cards, check animations, and drag-and-drop reordering (REQ-002, REQ-003, REQ-004)",
-        "details": "Implement task list component using modern card styling with clean effects. Create animated checkboxes with satisfying micro-interactions using Framer Motion. Add drag-and-drop functionality for task reordering with visual feedback. Include smooth animations for task completion and 'Done' button reveal. Optimize for performance with virtualization if needed.",
+        "title": "Build Task List Component with Modern Styling",
+        "description": "Create task list display with modern cards, check animations, and drag-and-drop reordering without category grouping",
+        "details": "Implement task list component using modern card styling with clean effects. Create animated checkboxes with satisfying micro-interactions using Framer Motion. Add drag-and-drop functionality for task reordering with visual feedback. Include smooth animations for task completion and 'Done' button reveal. Remove category-based grouping and priority indicators. Optimize for performance with virtualization if needed.",
         "testStrategy": "Test drag-and-drop on touch devices, verify animation performance, validate accessibility for screen readers",
         "priority": "high",
         "dependencies": [5, 6],
@@ -328,7 +310,7 @@
         "subtasks": [
           {
             "id": 1,
-            "title": "Create Glass Card Base Component",
+            "title": "Create Modern Card Base Component",
             "description": "Build reusable modern card component with clean styling effects using Tailwind + global.css approach",
             "dependencies": [],
             "details": "Create a base ModernCard component with configurable styling, border-radius, and transparency effects using Tailwind utilities and global.css. Include hover states and proper shadow effects. Support different sizes and padding variants. Ensure cross-browser compatibility for modern styling effects.",
@@ -347,9 +329,9 @@
           {
             "id": 3,
             "title": "Build Task List Layout Structure",
-            "description": "Create main task list container with proper spacing, virtualization, and responsive design",
+            "description": "Create main task list container without category grouping",
             "dependencies": ["7.1"],
-            "details": "Implement task list container with proper grid/list layout. Add virtualization support for large task lists using react-window or similar. Ensure responsive design works on mobile and desktop. Include empty state handling and loading states.",
+            "details": "Implement task list container with proper list layout. Add virtualization support for large task lists using react-window or similar. Ensure responsive design works on mobile and desktop. Include empty state handling and loading states. Remove category-based grouping functionality.",
             "status": "pending",
             "testStrategy": "Test with large task lists (1000+ items), verify virtualization performance, validate responsive behavior"
           },
@@ -374,124 +356,10 @@
         ]
       },
       {
-        "id": 8,
-        "title": "Implement Category Management System",
-        "description": "Create category creation, editing, and assignment functionality with predefined and custom categories (REQ-005, REQ-006)",
-        "details": "Setup predefined categories (Work, Personal, Shopping, Health) with distinct colors. Implement custom category creation with 10 category limit validation. Create category management UI with modern card design. Add category assignment during task creation and editing. Implement category persistence in local storage.",
-        "testStrategy": "Test category limit enforcement, verify category color assignments, validate category persistence and restoration",
-        "priority": "medium",
-        "dependencies": [5],
-        "status": "pending",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Setup predefined categories data structure",
-            "description": "Create predefined categories (Work, Personal, Shopping, Health) with distinct colors and implement the category data model",
-            "dependencies": [],
-            "details": "Define the predefined categories array with id, name, color properties. Assign distinct colors for each category (Work: blue, Personal: green, Shopping: purple, Health: red). Create the category constants and export them for use throughout the application.",
-            "status": "pending",
-            "testStrategy": "Verify predefined categories are correctly structured and colors are properly assigned"
-          },
-          {
-            "id": 2,
-            "title": "Implement category validation and limit enforcement",
-            "description": "Create validation logic for custom categories with 10 category limit and duplicate name prevention",
-            "dependencies": ["8.1"],
-            "details": "Implement validation functions to check category name uniqueness, enforce 10 category maximum limit, and validate category creation inputs. Add error handling for exceeded limits and duplicate names.",
-            "status": "pending",
-            "testStrategy": "Test category limit enforcement with edge cases, validate duplicate prevention and error messages"
-          },
-          {
-            "id": 3,
-            "title": "Create category management UI components",
-            "description": "Build category management interface with glass card design for viewing, creating, and editing categories",
-            "dependencies": ["8.1"],
-            "details": "Design and implement category management UI with modern styling using Tailwind classes and global.css. Include category list view with color indicators, add/edit category forms, and delete functionality. Use modern card components for consistent design.",
-            "status": "pending",
-            "testStrategy": "Test UI responsiveness, verify modern styling, validate form interactions and visual feedback"
-          },
-          {
-            "id": 4,
-            "title": "Integrate category assignment in task forms",
-            "description": "Add category selection functionality to task creation and editing forms",
-            "dependencies": ["8.1", "8.3"],
-            "details": "Modify task creation and editing forms to include category selection dropdown. Display categories with their colors, handle category assignment during task CRUD operations, and update task data model integration.",
-            "status": "pending",
-            "testStrategy": "Test category selection during task creation/editing, verify category assignment persistence"
-          },
-          {
-            "id": 5,
-            "title": "Implement category persistence in local storage",
-            "description": "Create local storage integration for category data persistence and restoration",
-            "dependencies": ["8.2"],
-            "details": "Implement local storage functions for saving and loading custom categories. Handle data migration between app versions, ensure predefined categories are always available, and sync category changes across browser sessions.",
-            "status": "pending",
-            "testStrategy": "Test category persistence across browser sessions, validate data restoration and migration scenarios"
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "title": "Build Category Filtering System",
-        "description": "Create filter view functionality to display tasks by selected categories (REQ-007)",
-        "details": "Implement tag-based filtering system with modern filter buttons. Create filtered task views showing only selected category tasks. Add 'All Categories' option and multi-select filtering capability. Integrate with Zustand store for filter state management. Include smooth transitions when switching between filtered views.",
-        "testStrategy": "Test filter combinations, verify task count accuracy in filtered views, validate filter state persistence",
-        "priority": "medium",
-        "dependencies": [7, 8],
-        "status": "pending",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Create Filter Button Component with Glassmorphism Design",
-            "description": "Build reusable filter button component with modern styling for category selection",
-            "dependencies": [],
-            "details": "Create FilterButton component with modern styling effects using Tailwind utilities and global.css. Include active/inactive states with smooth color transitions. Support category colors and 'All Categories' styling. Implement hover and focus states with accessibility features.",
-            "status": "pending",
-            "testStrategy": "Test button styling variations, verify accessibility compliance, validate smooth state transitions"
-          },
-          {
-            "id": 2,
-            "title": "Implement Filter State Management in Zustand Store",
-            "description": "Add filter state slice to Zustand store for managing selected categories and filter logic",
-            "dependencies": ["9.1"],
-            "details": "Extend Zustand store with filter slice containing selectedCategories array, activeFilters state, and filter actions (setFilter, clearFilters, toggleCategory). Implement multi-select logic and 'All Categories' toggle functionality. Add filter state persistence to localStorage.",
-            "status": "pending",
-            "testStrategy": "Unit tests for filter actions, verify state persistence, test multi-select combinations and edge cases"
-          },
-          {
-            "id": 3,
-            "title": "Build Filtered Task View Component",
-            "description": "Create component to display tasks filtered by selected categories with task count indicators",
-            "dependencies": ["9.2"],
-            "details": "Implement FilteredTaskView component that renders tasks based on active filters. Include task count display per category and total filtered count. Handle empty states when no tasks match filters. Integrate with existing task list components and maintain consistent styling.",
-            "status": "pending",
-            "testStrategy": "Test filter accuracy, verify task counts match filtered results, validate empty state handling"
-          },
-          {
-            "id": 4,
-            "title": "Add Filter Bar UI with Category Selection",
-            "description": "Create horizontal scrollable filter bar showing all available categories with selection controls",
-            "dependencies": ["9.1", "9.3"],
-            "details": "Build FilterBar component with horizontal scroll for category buttons. Include 'All Categories' button as first option. Add clear filters action and visual indicators for active filters count. Implement responsive design for mobile horizontal scroll and desktop grid layout.",
-            "status": "pending",
-            "testStrategy": "Test horizontal scroll behavior, verify responsive layout, validate filter clearing functionality"
-          },
-          {
-            "id": 5,
-            "title": "Implement Filter Transitions and Performance Optimization",
-            "description": "Add smooth animations when switching between filtered views and optimize rendering performance",
-            "dependencies": ["9.3", "9.4"],
-            "details": "Implement React transitions for filter changes using framer-motion or CSS transitions. Add fade-in/out effects for filtered task lists. Optimize performance with useMemo for filtered task calculations and virtual scrolling for large lists. Include loading states during filter operations.",
-            "status": "pending",
-            "testStrategy": "Test animation smoothness, measure performance with large datasets, verify loading states and transitions"
-          }
-        ]
-      },
-      {
         "id": 10,
         "title": "Add Due Date Functionality",
-        "description": "Implement due date setting and visual indicators for tasks (REQ-017)",
-        "details": "Create date picker component using date-fns library for date parsing and manipulation. Add due date field to task creation and editing forms. Implement visual due date indicators with color coding (overdue, due today, upcoming). Create date formatting utilities and relative date displays (e.g., 'Due tomorrow').",
+        "description": "Implement due date setting and visual indicators for tasks",
+        "details": "Create date picker component using date-fns library for date parsing and manipulation. Add due date field to task creation and editing forms. Implement visual due date indicators with color coding (overdue, due today, upcoming). Create date formatting utilities and relative date displays (e.g., 'Due tomorrow'). Remove priority-based coloring and focus on date-based indicators only.",
         "testStrategy": "Test date picker functionality across timezones, verify date parsing accuracy, validate visual indicators for different due date states",
         "priority": "medium",
         "dependencies": [7],
@@ -518,9 +386,9 @@
           {
             "id": 3,
             "title": "Implement Visual Due Date Indicators",
-            "description": "Create color-coded visual indicators for different due date states (overdue, due today, upcoming)",
+            "description": "Create color-coded visual indicators for different due date states",
             "dependencies": ["10.2"],
-            "details": "Design and implement visual indicators with distinct colors: red for overdue, orange for due today, yellow for due soon, and green for upcoming. Add subtle animations and badges to task cards. Ensure indicators work with both light and dark themes.",
+            "details": "Design and implement visual indicators with distinct colors: red for overdue, orange for due today, yellow for due soon, and green for upcoming. Add subtle animations and badges to task cards. Ensure indicators work with both light and dark themes. Remove priority-based indicators.",
             "status": "pending",
             "testStrategy": "Test indicator accuracy across different date scenarios, verify color accessibility and theme compatibility, validate real-time updates"
           },
@@ -536,19 +404,19 @@
           {
             "id": 5,
             "title": "Update Task Storage Schema",
-            "description": "Modify task data structure to include due date field and update storage logic",
+            "description": "Modify task data structure to include due date field in in-memory storage",
             "dependencies": ["10.4"],
-            "details": "Update TypeScript interfaces to include optional dueDate field. Modify Zustand store to handle due date operations. Update local storage persistence to include due date data. Implement migration logic for existing tasks without due dates.",
+            "details": "Update TypeScript interfaces to include optional dueDate field. Modify Zustand store to handle due date operations. Remove local storage persistence functionality. Focus on in-memory state management for due date data.",
             "status": "pending",
-            "testStrategy": "Test data migration for existing tasks, verify storage persistence, validate TypeScript type safety"
+            "testStrategy": "Test in-memory state management, verify TypeScript type safety, validate due date operations"
           }
         ]
       },
       {
         "id": 11,
         "title": "Implement Search Functionality",
-        "description": "Create instant search across all tasks with modern overlay (REQ-008, REQ-009)",
-        "details": "Implement search overlay with modern styling triggered by Cmd/Ctrl+K or search icon. Use Fuse.js for fuzzy search functionality across task content and titles. Add debounced search implementation for real-time results. Create empty state handling for no results and search result pagination for performance.",
+        "description": "Create instant search across all tasks with modern overlay",
+        "details": "Implement search overlay with modern styling triggered by Cmd/Ctrl+K or search icon. Use Fuse.js for fuzzy search functionality across task content and titles. Add debounced search implementation for real-time results. Create empty state handling for no results and search result pagination for performance. Remove category-based filtering from search results.",
         "testStrategy": "Test search accuracy and performance with large datasets, verify keyboard shortcuts, validate fuzzy search results relevance",
         "priority": "low",
         "dependencies": [7],
@@ -575,9 +443,9 @@
           {
             "id": 3,
             "title": "Integrate Fuse.js for fuzzy search functionality",
-            "description": "Setup Fuse.js library and configure fuzzy search across task titles and content",
+            "description": "Setup Fuse.js library and configure fuzzy search across task titles and content only",
             "dependencies": ["11.1"],
-            "details": "Install and configure Fuse.js with optimized search options for task data. Setup search indices for task titles, descriptions, and category names. Configure fuzzy search parameters including threshold, distance, and keys to search. Implement search result ranking and relevance scoring.",
+            "details": "Install and configure Fuse.js with optimized search options for task data. Setup search indices for task titles and descriptions only. Remove category name searching. Configure fuzzy search parameters including threshold, distance, and keys to search. Implement search result ranking and relevance scoring.",
             "status": "pending",
             "testStrategy": "Test search accuracy with various query types, verify fuzzy matching works for typos and partial matches, validate search performance with large datasets"
           },
@@ -604,11 +472,11 @@
       {
         "id": 12,
         "title": "Create Main Dashboard (Today View)",
-        "description": "Build primary workspace showing today's tasks with welcome header and quick access features",
-        "details": "Create Today view dashboard with welcome header displaying current date, quick add input integration, and today's tasks grouped by time/category. Implement task prioritization display and quick access to other lists. Add modern styling consistent with design system and responsive layout for mobile/desktop.",
-        "testStrategy": "Test date display accuracy, verify task grouping logic, validate responsive behavior across screen sizes",
+        "description": "Build primary workspace showing today's tasks with welcome header and simplified features",
+        "details": "Create Today view dashboard with welcome header displaying current date, quick add input integration, and today's tasks chronologically organized. Remove category-based grouping and priority display. Add modern styling consistent with design system and responsive layout for mobile/desktop. Focus on date-based task organization only.",
+        "testStrategy": "Test date display accuracy, verify task chronological sorting, validate responsive behavior across screen sizes",
         "priority": "high",
-        "dependencies": [7, 9, 10],
+        "dependencies": [7, 10],
         "status": "pending",
         "subtasks": [
           {
@@ -632,27 +500,27 @@
           {
             "id": 3,
             "title": "Implement Today's Tasks Display Logic",
-            "description": "Create component to fetch, filter, and display today's tasks",
+            "description": "Create component to fetch, filter, and display today's tasks chronologically",
             "dependencies": ["12.2"],
-            "details": "Build task display logic to filter tasks for current date, fetch from Zustand store, and render task list with proper state management. Include empty state handling and loading states. Support real-time updates when tasks are added or modified.",
+            "details": "Build task display logic to filter tasks for current date, fetch from Zustand store, and render task list chronologically. Remove category-based filtering. Include empty state handling and loading states. Support real-time updates when tasks are added or modified.",
             "status": "pending",
             "testStrategy": "Test date filtering accuracy, verify real-time task updates, validate empty and loading states"
           },
           {
             "id": 4,
-            "title": "Create Task Grouping and Prioritization System",
-            "description": "Implement task organization by time periods and priority levels",
+            "title": "Create Task Time-Based Organization System",
+            "description": "Implement task organization by time periods without priority levels",
             "dependencies": ["12.3"],
-            "details": "Build task grouping logic to organize today's tasks by time categories (overdue, morning, afternoon, evening) and priority levels (high, medium, low). Implement visual indicators for different priority levels and time-based grouping with collapsible sections.",
+            "details": "Build task grouping logic to organize today's tasks by time categories (overdue, morning, afternoon, evening) without priority indicators. Remove priority-based sorting and visual indicators. Implement time-based grouping with collapsible sections.",
             "status": "pending",
-            "testStrategy": "Test task grouping accuracy, verify priority sorting logic, validate collapsible section functionality"
+            "testStrategy": "Test task time-based grouping accuracy, validate collapsible section functionality"
           },
           {
             "id": 5,
             "title": "Add Quick Access Navigation Features",
-            "description": "Implement quick navigation shortcuts and list access from dashboard",
+            "description": "Implement simplified navigation shortcuts without list access",
             "dependencies": ["12.4"],
-            "details": "Create quick access buttons/links for navigating to different task lists, settings, and other key features. Implement keyboard shortcuts for power users and ensure quick actions are easily discoverable. Add visual indicators for task counts in other lists.",
+            "details": "Create quick access buttons/links for navigating to search, settings, and completed tasks. Remove category list navigation. Implement keyboard shortcuts for power users and ensure quick actions are easily discoverable. Add visual indicators for total task counts.",
             "status": "pending",
             "testStrategy": "Test navigation shortcuts functionality, verify keyboard shortcut mappings, validate task count accuracy in quick access indicators"
           }
@@ -660,58 +528,58 @@
       },
       {
         "id": 13,
-        "title": "Build All Lists View",
-        "description": "Create overview page showing all task categories and custom lists in grid layout",
-        "details": "Implement grid layout of modern cards for each category with task counts and category colors. Add create new category floating action button. Include search and filter options for category management. Display category statistics and quick preview of tasks within each category.",
-        "testStrategy": "Test grid layout responsiveness, verify category statistics accuracy, validate category creation workflow",
+        "title": "Build All Tasks View",
+        "description": "Create simple overview page showing all tasks in chronological layout without categories",
+        "details": "Implement simple list layout of all tasks organized chronologically without category grouping. Remove category-based organization, colors, and statistics. Add search and filter options for basic task management. Display task counts and simple task previews. Focus on date-based organization and basic task management.",
+        "testStrategy": "Test chronological layout responsiveness, verify task statistics accuracy, validate search and filter functionality",
         "priority": "medium",
-        "dependencies": [8, 9],
+        "dependencies": [],
         "status": "pending",
         "subtasks": [
           {
             "id": 1,
-            "title": "Create Lists Overview Page Structure",
+            "title": "Create All Tasks Page Structure",
             "description": "Set up the basic page component structure with routing and main container layout",
             "dependencies": [],
-            "details": "Create the AllListsView component with proper routing setup. Implement the main page container with modern background styling and responsive layout structure. Set up the page header with title and navigation breadcrumbs.",
+            "details": "Create the AllTasksView component with proper routing setup. Implement the main page container with modern background styling and responsive layout structure. Set up the page header with title and navigation breadcrumbs.",
             "status": "pending",
             "testStrategy": "Test page routing functionality, verify responsive container layout, validate page accessibility structure"
           },
           {
             "id": 2,
-            "title": "Implement Grid Layout System",
-            "description": "Build responsive grid container for displaying category cards with proper spacing and alignment",
+            "title": "Implement Chronological List Layout System",
+            "description": "Build responsive list container for displaying tasks chronologically",
             "dependencies": ["13.1"],
-            "details": "Create CSS Grid layout system that adapts from 1 column on mobile to 2-3 columns on tablet/desktop. Implement proper gap spacing, auto-fit responsive behavior, and ensure cards maintain consistent aspect ratios across screen sizes.",
+            "details": "Create list layout system that displays tasks in chronological order (newest first). Implement proper spacing, responsive behavior, and ensure consistent task card layouts across screen sizes. Remove grid-based category organization.",
             "status": "pending",
-            "testStrategy": "Test grid responsiveness across breakpoints, verify consistent card spacing, validate layout performance with varying numbers of categories"
+            "testStrategy": "Test list responsiveness across breakpoints, verify consistent spacing, validate layout performance with varying numbers of tasks"
           },
           {
             "id": 3,
-            "title": "Build Category Glass Cards",
-            "description": "Create individual category card components with modern styling, task counts, and category colors",
+            "title": "Build Simple Task Cards",
+            "description": "Create individual task card components with modern styling and basic information",
             "dependencies": ["13.2"],
-            "details": "Design and implement modern card components with clean styling effects using Tailwind utilities and global.css, category-specific color accents, task count badges, and subtle hover animations. Include category icons, names, and quick preview of recent tasks within each card.",
+            "details": "Design and implement simple task cards with modern styling effects using Tailwind utilities and global.css, due date indicators, and subtle hover animations. Remove category colors, icons, and complex grouping. Include task titles, descriptions, and due dates.",
             "status": "pending",
-            "testStrategy": "Test modern styling effects across browsers, verify color theming accuracy, validate hover states and card interactions"
+            "testStrategy": "Test modern styling effects across browsers, verify hover states and card interactions"
           },
           {
             "id": 4,
             "title": "Add Search and Filter Controls",
-            "description": "Implement search input and filter options for category management with real-time updates",
+            "description": "Implement search input and basic filter options for task management",
             "dependencies": ["13.3"],
-            "details": "Create search input with modern styling for real-time category filtering. Implement filter dropdown for sorting by task count, creation date, or alphabetical order. Add filter chips for active filters with clear functionality.",
+            "details": "Create search input with modern styling for real-time task filtering. Implement basic filter dropdown for sorting by due date, creation date, or completion status. Remove category-based filters. Add filter chips for active filters with clear functionality.",
             "status": "pending",
             "testStrategy": "Test real-time search functionality, verify filter accuracy, validate keyboard navigation and accessibility"
           },
           {
             "id": 5,
-            "title": "Integrate Create Category FAB",
-            "description": "Add floating action button for creating new categories with modal integration",
+            "title": "Add Task Statistics Display",
+            "description": "Display simple task counts and basic statistics without category breakdown",
             "dependencies": ["13.4"],
-            "details": "Implement floating action button with modern styling positioned in bottom-right corner. Connect to category creation modal with smooth animations. Ensure FAB remains accessible and doesn't interfere with grid scrolling or mobile navigation.",
+            "details": "Implement simple statistics display showing total tasks, completed tasks, and overdue tasks. Remove category-based statistics and complex analytics. Add visual progress indicators for task completion rates.",
             "status": "pending",
-            "testStrategy": "Test FAB positioning across screen sizes, verify modal integration, validate touch targets and accessibility compliance"
+            "testStrategy": "Test statistic accuracy, verify real-time updates, validate visual progress indicators"
           }
         ]
       },
@@ -719,7 +587,7 @@
         "id": 14,
         "title": "Create Completed Tasks View",
         "description": "Build interface for reviewing and restoring completed items with chronological organization",
-        "details": "Create completed tasks page showing chronological list of finished items with completion dates. Implement restore functionality to move tasks back to active state. Add bulk actions for clearing old completed tasks. Include search and filter capabilities for completed items with modern styling.",
+        "details": "Create completed tasks page showing chronological list of finished items with completion dates. Implement restore functionality to move tasks back to active state. Add bulk actions for clearing old completed tasks. Include search and filter capabilities for completed items with modern styling. Remove category-based organization from completed tasks.",
         "testStrategy": "Test task restoration functionality, verify chronological sorting accuracy, validate bulk action performance",
         "priority": "low",
         "dependencies": [7],
@@ -757,7 +625,7 @@
             "title": "Build Search and Filter Capabilities",
             "description": "Create search input and filter options for finding specific completed tasks",
             "dependencies": ["14.2"],
-            "details": "Add search input with real-time filtering by task title and description. Implement date range filter, category filter, and completion date sorting options. Use debounced search to optimize performance and maintain filter state in component.",
+            "details": "Add search input with real-time filtering by task title and description. Implement date range filter and completion date sorting options. Remove category filters. Use debounced search to optimize performance and maintain filter state in component.",
             "status": "pending",
             "testStrategy": "Test search functionality accuracy, verify filter combinations work correctly, validate performance with large datasets"
           },
@@ -775,9 +643,9 @@
       {
         "id": 15,
         "title": "Implement Settings and Theme Management",
-        "description": "Create settings page with theme switching, preferences, and app configuration options",
-        "details": "Build settings page with modern styling including dark/light theme toggle, notification preferences, and data management options. Implement theme switching with smooth transitions and system preference detection. Add export/import functionality for local storage data backup. Include privacy policy and support links as specified in footer requirements.",
-        "testStrategy": "Test theme switching animations, verify settings persistence, validate data export/import functionality",
+        "description": "Create settings page with theme switching and simplified preferences without data persistence",
+        "details": "Build settings page with modern styling including dark/light theme toggle and notification preferences. Remove data management options including export/import functionality and local storage backup features. Implement theme switching with smooth transitions and system preference detection. Include privacy policy and support links as specified in footer requirements. Focus on in-session settings management only.",
+        "testStrategy": "Test theme switching animations, verify settings persistence during session, validate notification preferences functionality",
         "priority": "low",
         "dependencies": [4],
         "status": "pending",
@@ -787,7 +655,7 @@
             "title": "Create Settings Page Layout and Navigation",
             "description": "Build the main settings page component with modern styling and navigation structure",
             "dependencies": [],
-            "details": "Create SettingsPage component with modern card design using Tailwind utilities and global.css. Implement navigation structure for different settings sections (Theme, Notifications, Data Management, Privacy). Add proper routing and page transitions. Include back navigation to main app.",
+            "details": "Create SettingsPage component with modern card design using Tailwind utilities and global.css. Implement navigation structure for different settings sections (Theme, Notifications, Privacy). Remove Data Management section. Add proper routing and page transitions. Include back navigation to main app.",
             "status": "pending",
             "testStrategy": "Test page rendering, navigation between sections, modern styling consistency, responsive design across devices"
           },
@@ -796,27 +664,27 @@
             "title": "Implement Theme Switching System",
             "description": "Create dark/light theme toggle with smooth transitions and system preference detection",
             "dependencies": ["15.1"],
-            "details": "Build theme context provider with dark/light mode state. Implement CSS variables for theme colors and smooth transitions. Add system preference detection using prefers-color-scheme. Create theme toggle component with animated switch. Persist theme preference in local storage.",
+            "details": "Build theme context provider with dark/light mode state. Implement CSS variables for theme colors and smooth transitions. Add system preference detection using prefers-color-scheme. Create theme toggle component with animated switch. Store theme preference in session state only.",
             "status": "pending",
-            "testStrategy": "Test theme switching animations, verify system preference detection, validate theme persistence across sessions, test color contrast ratios"
+            "testStrategy": "Test theme switching animations, verify system preference detection, validate theme persistence during session, test color contrast ratios"
           },
           {
             "id": 3,
             "title": "Build Notification Preferences Interface",
             "description": "Create notification settings section with toggles for different notification types",
             "dependencies": ["15.1"],
-            "details": "Design notification preferences UI with toggle switches for different notification types (task reminders, due date alerts, completion notifications). Implement notification permission handling. Add notification preview functionality. Store preferences in local storage with proper validation.",
+            "details": "Design notification preferences UI with toggle switches for different notification types (task reminders, due date alerts, completion notifications). Implement notification permission handling. Add notification preview functionality. Store preferences in session state with basic validation.",
             "status": "pending",
-            "testStrategy": "Test notification toggles functionality, verify browser notification permissions, validate preference persistence, test notification preview features"
+            "testStrategy": "Test notification toggles functionality, verify browser notification permissions, validate preference persistence during session, test notification preview features"
           },
           {
             "id": 4,
-            "title": "Implement Data Management and Export/Import",
-            "description": "Create data backup functionality with export/import capabilities for local storage",
+            "title": "Remove Data Management Features",
+            "description": "Remove all local storage, export/import, and data persistence functionality",
             "dependencies": ["15.1"],
-            "details": "Build data export functionality to generate JSON backup of tasks, categories, and settings. Implement import functionality with data validation and conflict resolution. Add data clearing options with confirmation dialogs. Create backup/restore UI with file upload/download capabilities.",
+            "details": "Remove data export/import functionality, local storage backup features, and persistent data management options. Clean up any references to data persistence. Focus on in-session settings management only.",
             "status": "pending",
-            "testStrategy": "Test data export completeness, verify import validation and error handling, test data clearing functionality, validate file format compatibility"
+            "testStrategy": "Verify removal of data persistence features, validate clean session-only functionality"
           },
           {
             "id": 5,
