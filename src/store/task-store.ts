@@ -22,8 +22,15 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   tasks: [],
 
   addTask: (taskInput: TaskInput) => {
+    // Basic validation
+    if (!taskInput.title.trim()) {
+      throw new Error("Task title cannot be empty");
+    }
+
     const newTask: Task = {
       ...taskInput,
+      title: taskInput.title.trim(),
+      description: taskInput.description.trim(),
       id: generateId(),
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -35,9 +42,24 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   },
 
   updateTask: (id: string, updates: TaskUpdate) => {
+    // Validate title if provided
+    if (updates.title !== undefined && !updates.title.trim()) {
+      throw new Error("Task title cannot be empty");
+    }
+
+    const cleanUpdates = {
+      ...updates,
+      ...(updates.title && { title: updates.title.trim() }),
+      ...(updates.description !== undefined && {
+        description: updates.description.trim(),
+      }),
+    };
+
     set((state) => ({
       tasks: state.tasks.map((task) =>
-        task.id === id ? { ...task, ...updates, updatedAt: new Date() } : task
+        task.id === id
+          ? { ...task, ...cleanUpdates, updatedAt: new Date() }
+          : task
       ),
     }));
   },

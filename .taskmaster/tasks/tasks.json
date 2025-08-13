@@ -120,7 +120,7 @@
             "id": 3,
             "title": "Implement basic task CRUD operations",
             "description": "Create essential task-related actions including creation, completion, deletion, and update operations",
-            "status": "pending",
+            "status": "done",
             "dependencies": [2],
             "details": "Implement addTask action with validation and ID generation. Create updateTask for editing existing tasks. Add toggleTaskCompletion for marking done/undone. Implement deleteTask action. Remove reordering, bulk operations, and priority-related features.",
             "testStrategy": "Unit tests for each CRUD operation, verify state mutations are immutable, test edge cases like duplicate IDs and invalid operations"
@@ -700,7 +700,7 @@
     ],
     "metadata": {
       "created": "2025-08-08T08:41:22.888Z",
-      "updated": "2025-08-13T09:38:53.771Z",
+      "updated": "2025-08-13T09:40:36.316Z",
       "description": "Tasks for master context"
     }
   }
