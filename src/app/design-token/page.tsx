@@ -53,10 +53,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useAppStore } from "@/store";
 
 export default function Example() {
   const [progress, setProgress] = useState(60);
   const [switchChecked, setSwitchChecked] = useState(false);
+  const { count } = useAppStore();
+  console.log("example page");
 
   const colorSwatches = [
     {
@@ -158,6 +161,7 @@ export default function Example() {
 
   return (
     <TooltipProvider>
+      <div>{count}</div>
       <div className="bg-background text-foreground min-h-screen">
         {/* Header */}
         <div className="bg-card border-b">
