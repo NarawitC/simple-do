@@ -1,7 +1,7 @@
 "use client";
-import { AppVersion } from "@/components/app-version";
-import { Count } from "@/components/count";
-import { IsOnline } from "@/components/is-online";
+import { AppVersion } from "@/components/custom/app-version";
+import { Count } from "@/components/custom/count";
+import { IsOnline } from "@/components/custom/is-online";
 import { Button } from "@/components/ui/button";
 import { useAppStore, useAppStoreBase } from "@/store";
 
