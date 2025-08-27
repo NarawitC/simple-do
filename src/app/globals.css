@@ -184,3 +184,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Global link hover styles */
+  a {
+    @apply transition-colors duration-200 hover:underline;
+  }
+
+  /* Footer specific link styles */
+  footer a {
+    @apply text-muted-foreground hover:text-foreground;
+  }
+}
