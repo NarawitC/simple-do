@@ -28,7 +28,6 @@ function SelectedTheme({ theme }: { theme: string | undefined }) {
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
-  console.log("theme", theme);
 
   return (
     <DropdownMenu>
