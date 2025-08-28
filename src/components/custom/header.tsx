@@ -1,8 +1,10 @@
 "use client";
 
 import { CheckSquare } from "lucide-react";
-import { ThemeToggle } from "@/components/custom/theme-toggle";
+
 import { SearchModal } from "@/components/custom/search-modal";
+import { ThemeToggle } from "@/components/custom/theme-toggle";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export function Header() {
   return (
@@ -23,6 +25,10 @@ export function Header() {
         <div className="flex items-center gap-3">
           <SearchModal />
           <ThemeToggle />
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>TEST</AvatarFallback>
+          </Avatar>
         </div>
       </div>
     </header>
