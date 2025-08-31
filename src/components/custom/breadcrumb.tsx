@@ -32,7 +32,7 @@ export function AppBreadcrumb() {
   );
 
   return (
-    <Breadcrumb className="container mx-auto mt-2">
+    <Breadcrumb className="container mx-auto my-8">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

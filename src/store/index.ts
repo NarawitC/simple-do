@@ -52,6 +52,30 @@ export const useAppStoreBase = create<AppStore>()(
           // Only persist certain parts
           tasks: state.tasks,
         }),
+        storage: {
+          getItem: (name) => {
+            const str = localStorage.getItem(name);
+            if (!str) return null;
+
+            const parsed = JSON.parse(str);
+            // Convert ISO strings back to Date objects
+            if (parsed.state?.tasks) {
+              parsed.state.tasks = parsed.state.tasks.map((task: any) => ({
+                ...task,
+                createdAt: new Date(task.createdAt),
+                updatedAt: new Date(task.updatedAt),
+                dueDate: new Date(task.dueDate),
+              }));
+            }
+            return parsed;
+          },
+          setItem: (name, value) => {
+            localStorage.setItem(name, JSON.stringify(value));
+          },
+          removeItem: (name) => {
+            localStorage.removeItem(name);
+          },
+        },
       }
     ),
     { name: "app-store" }

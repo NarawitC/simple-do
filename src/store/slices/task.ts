@@ -26,17 +26,7 @@ export const createTaskSlice: StateCreator<
   [],
   TaskSlice
 > = (set, get) => ({
-  tasks: [
-    {
-      id: "10C233A0-8056-4CE2-ACE8-9A9CE3E70314",
-      title: "first note",
-      description: "this is a first note description",
-      completed: false,
-      dueDate: new Date(),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ] as Task[],
+  tasks: [] as Task[],
 
   addTask: (taskInput: TaskInput) => {
     // Basic validation
@@ -45,10 +35,11 @@ export const createTaskSlice: StateCreator<
     }
 
     const newTask: Task = {
+      id: generateId(),
       ...taskInput,
       title: taskInput.title.trim(),
       description: taskInput.description.trim(),
-      id: generateId(),
+      completed: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -63,7 +54,7 @@ export const createTaskSlice: StateCreator<
       const task = state.tasks.find((task) => task.id === id);
       if (task) {
         Object.assign(task, updates, {
-          updatedAt: new Date(),
+          updatedAt: new Date().toISOString(),
         });
       }
     });
