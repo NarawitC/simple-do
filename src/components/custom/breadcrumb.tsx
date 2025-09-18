@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import _ from "lodash";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import _ from 'lodash';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import {
   Breadcrumb,
@@ -12,20 +12,20 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from '@/components/ui/breadcrumb';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 
 export function AppBreadcrumb() {
   const pathname = usePathname();
-  const pathSegments = pathname.split("/").filter(Boolean);
+  const pathSegments = pathname.split('/').filter(Boolean);
 
   const buildPath = (index: number) => {
-    return "/" + pathSegments.slice(0, index + 1).join("/");
+    return '/' + pathSegments.slice(0, index + 1).join('/');
   };
   const linkFromPathSegmentIndex = (index: number) => (
     <Link href={buildPath(index)}>{_.capitalize(pathSegments[index])}</Link>

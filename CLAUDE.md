@@ -45,8 +45,8 @@ The application uses a single Zustand store for task management located at `src/
 **Import Pattern:**
 
 ```typescript
-import { useTaskStore } from "@/store";
-import type { Task, TaskInput, TaskUpdate } from "@/store";
+import { useTaskStore } from '@/store';
+import type { Task, TaskInput, TaskUpdate } from '@/store';
 ```
 
 ### TypeScript Configuration

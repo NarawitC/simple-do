@@ -1,6 +1,6 @@
-import { StateCreator } from "zustand";
-import { Task, TaskInput, TaskUpdate } from "@/types/task";
-import type { AppStore } from "../types";
+import { StateCreator } from 'zustand';
+import { Task, TaskInput, TaskUpdate } from '@/types/task';
+import type { AppStore } from '../types';
 
 const generateId = (): string => {
   return crypto.randomUUID();
@@ -19,9 +19,9 @@ export interface TaskSlice {
 export const createTaskSlice: StateCreator<
   AppStore,
   [
-    ["zustand/devtools", never],
-    ["zustand/persist", unknown],
-    ["zustand/immer", never],
+    ['zustand/devtools', never],
+    ['zustand/persist', unknown],
+    ['zustand/immer', never],
   ],
   [],
   TaskSlice
@@ -31,7 +31,7 @@ export const createTaskSlice: StateCreator<
   addTask: (taskInput: TaskInput) => {
     // Basic validation
     if (!taskInput.title.trim()) {
-      throw new Error("Task title cannot be empty");
+      throw new Error('Task title cannot be empty');
     }
 
     const newTask: Task = {

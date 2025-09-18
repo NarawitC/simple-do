@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { AlertCircle, Info, User, Settings, Home } from "lucide-react";
-import { useState } from "react";
+import { AlertCircle, Info, User, Settings, Home } from 'lucide-react';
+import { useState } from 'react';
 
-import { ThemeToggle } from "@/components/custom/theme-toggle";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { ThemeToggle } from '@/components/custom/theme-toggle';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,10 +14,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
+} from '@/components/ui/breadcrumb';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Dialog,
   DialogContent,
@@ -25,138 +25,138 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Progress } from "@/components/ui/progress";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+} from '@/components/ui/popover';
+import { Progress } from '@/components/ui/progress';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { useAppStore } from "@/store";
+} from '@/components/ui/tooltip';
+import { useAppStore } from '@/store';
 
 export default function Example() {
   const [progress, setProgress] = useState(60);
   const [switchChecked, setSwitchChecked] = useState(false);
   const { count } = useAppStore();
-  console.log("example page");
+  console.log('example page');
 
   const colorSwatches = [
     {
-      name: "Primary",
-      className: "bg-primary",
-      textClass: "text-primary-foreground",
-      description: "Deep purple accent - main brand color",
+      name: 'Primary',
+      className: 'bg-primary',
+      textClass: 'text-primary-foreground',
+      description: 'Deep purple accent - main brand color',
     },
     {
-      name: "Secondary",
-      className: "bg-secondary",
-      textClass: "text-secondary-foreground",
-      description: "Light secondary backgrounds",
+      name: 'Secondary',
+      className: 'bg-secondary',
+      textClass: 'text-secondary-foreground',
+      description: 'Light secondary backgrounds',
     },
     {
-      name: "Accent",
-      className: "bg-accent",
-      textClass: "text-accent-foreground",
+      name: 'Accent',
+      className: 'bg-accent',
+      textClass: 'text-accent-foreground',
       description:
-        "Deeper purple (#7a12ff) - used for borders and rings in dark theme",
+        'Deeper purple (#7a12ff) - used for borders and rings in dark theme',
     },
     {
-      name: "Background",
-      className: "bg-background",
-      textClass: "text-foreground",
-      description: "Main app background",
+      name: 'Background',
+      className: 'bg-background',
+      textClass: 'text-foreground',
+      description: 'Main app background',
     },
     {
-      name: "Card",
-      className: "bg-card",
-      textClass: "text-card-foreground",
-      description: "Card surfaces",
+      name: 'Card',
+      className: 'bg-card',
+      textClass: 'text-card-foreground',
+      description: 'Card surfaces',
     },
     {
-      name: "Border",
-      className: "bg-border border-2 border-border",
-      textClass: "text-foreground",
+      name: 'Border',
+      className: 'bg-border border-2 border-border',
+      textClass: 'text-foreground',
       description:
-        "Border color - references accent color (var(--accent)) in dark theme",
+        'Border color - references accent color (var(--accent)) in dark theme',
     },
     {
-      name: "Ring",
-      className: "bg-ring",
-      textClass: "text-primary-foreground",
+      name: 'Ring',
+      className: 'bg-ring',
+      textClass: 'text-primary-foreground',
       description:
-        "Focus ring color - references accent color (var(--accent)) in dark theme",
+        'Focus ring color - references accent color (var(--accent)) in dark theme',
     },
     {
-      name: "Muted",
-      className: "bg-muted",
-      textClass: "text-muted-foreground",
-      description: "Muted backgrounds",
+      name: 'Muted',
+      className: 'bg-muted',
+      textClass: 'text-muted-foreground',
+      description: 'Muted backgrounds',
     },
   ];
 
   const statusColors = [
     {
-      name: "Success",
-      className: "bg-success",
-      description: "Green - positive states",
+      name: 'Success',
+      className: 'bg-success',
+      description: 'Green - positive states',
     },
     {
-      name: "Warning",
-      className: "bg-warning",
-      description: "Orange - warning states",
+      name: 'Warning',
+      className: 'bg-warning',
+      description: 'Orange - warning states',
     },
-    { name: "Error", className: "bg-error", description: "Red - error states" },
-    { name: "Info", className: "bg-info", description: "Blue - info states" },
+    { name: 'Error', className: 'bg-error', description: 'Red - error states' },
+    { name: 'Info', className: 'bg-info', description: 'Blue - info states' },
     {
-      name: "Destructive",
-      className: "bg-destructive",
-      description: "Red - destructive actions",
+      name: 'Destructive',
+      className: 'bg-destructive',
+      description: 'Red - destructive actions',
     },
   ];
 
   const chartColors = [
     {
-      name: "Chart 1 (Primary)",
-      className: "bg-chart-1",
-      description: "Purple primary",
+      name: 'Chart 1 (Primary)',
+      className: 'bg-chart-1',
+      description: 'Purple primary',
     },
     {
-      name: "Chart 2 (Secondary)",
-      className: "bg-chart-2",
-      description: "Light purple",
+      name: 'Chart 2 (Secondary)',
+      className: 'bg-chart-2',
+      description: 'Light purple',
     },
     {
-      name: "Chart 3 (Success)",
-      className: "bg-chart-3",
-      description: "Green",
+      name: 'Chart 3 (Success)',
+      className: 'bg-chart-3',
+      description: 'Green',
     },
     {
-      name: "Chart 4 (Warning)",
-      className: "bg-chart-4",
-      description: "Orange",
+      name: 'Chart 4 (Warning)',
+      className: 'bg-chart-4',
+      description: 'Orange',
     },
-    { name: "Chart 5 (Error)", className: "bg-chart-5", description: "Red" },
+    { name: 'Chart 5 (Error)', className: 'bg-chart-5', description: 'Red' },
   ];
 
   return (

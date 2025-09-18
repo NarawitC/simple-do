@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { format } from "date-fns";
-import { Clock, Calendar, Search } from "lucide-react";
-import { useEffect, useState } from "react";
+import { format } from 'date-fns';
+import { Clock, Calendar, Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   CommandDialog,
   CommandEmpty,
@@ -19,9 +19,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { useAppStore } from "@/store";
-import type { Task } from "@/store";
+} from '@/components/ui/command';
+import { useAppStore } from '@/store';
+import type { Task } from '@/store';
 
 export function SearchModal() {
   const [open, setOpen] = useState(false);
@@ -33,14 +33,14 @@ export function SearchModal() {
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
       }
     };
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
   }, []);
 
   return (
@@ -76,7 +76,7 @@ export function SearchModal() {
                   <CardHeader>
                     <CardTitle>
                       <span
-                        className={`${task.completed ? "text-muted-foreground line-through" : ""}`}
+                        className={`${task.completed ? 'text-muted-foreground line-through' : ''}`}
                       >
                         {task.title}
                       </span>
@@ -91,12 +91,12 @@ export function SearchModal() {
                   <CardContent>
                     <div className="flex items-center gap-1">
                       <Clock />
-                      {format(task.createdAt, "MMM d, yyyy")}
+                      {format(task.createdAt, 'MMM d, yyyy')}
                     </div>
                     {task.dueDate && (
                       <div className="text-warning flex items-center gap-1">
                         <Calendar />
-                        Due {format(task.dueDate, "MMM d")}
+                        Due {format(task.dueDate, 'MMM d')}
                       </div>
                     )}
                   </CardContent>
