@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { CheckSquare } from 'lucide-react';
+import { CheckSquare } from "lucide-react";
 
-import { SearchModal } from '@/components/custom/search-modal';
-import { ThemeToggle } from '@/components/custom/theme-toggle';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { SearchModal } from "@/components/custom/search-modal";
+import { ThemeToggle } from "@/components/custom/theme-toggle";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export function Header() {
   return (

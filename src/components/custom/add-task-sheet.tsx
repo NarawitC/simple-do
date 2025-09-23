@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useForm } from 'react-hook-form';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form";
 import {
   Sheet,
   SheetClose,
@@ -12,7 +12,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
+} from "@/components/ui/sheet";
 import {
   Form,
   FormControl,
@@ -21,28 +21,28 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
+} from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { useAppStore } from '@/store';
-import { CalendarIcon, Plus } from 'lucide-react';
-import { z } from 'zod';
-import { addTaskSchema } from '@/schema/add-task.schema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { format } from 'date-fns';
-import { cn } from '@/lib/utils';
-import { Calendar } from '@/components/ui/calendar';
+} from "@/components/ui/popover";
+import { useAppStore } from "@/store";
+import { CalendarIcon, Plus } from "lucide-react";
+import { z } from "zod";
+import { addTaskSchema } from "@/schema/add-task.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
 
 export function AddTaskSheet() {
   const addTask = useAppStore.use.addTask();
   const form = useForm<z.infer<typeof addTaskSchema>>({
     resolver: zodResolver(addTaskSchema),
     defaultValues: {
-      title: '',
-      description: '',
+      title: "",
+      description: "",
       dueDate: new Date(),
     },
   });
@@ -112,12 +112,12 @@ export function AddTaskSheet() {
                         <Button
                           variant="outline"
                           className={cn(
-                            'w-[240px] pl-3 text-left font-normal',
-                            !field.value && 'text-muted-foreground',
+                            "w-[240px] pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
                           )}
                         >
                           {field.value ? (
-                            format(field.value, 'E d MMM, yyyy')
+                            format(field.value, "E d MMM, yyyy")
                           ) : (
                             <span>Pick a date</span>
                           )}
@@ -131,7 +131,7 @@ export function AddTaskSheet() {
                         selected={field.value}
                         onSelect={field.onChange}
                         disabled={(date: Date) =>
-                          date > new Date() || date < new Date('1900-01-01')
+                          date > new Date() || date < new Date("1900-01-01")
                         }
                         captionLayout="dropdown"
                       />

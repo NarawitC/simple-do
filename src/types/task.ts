@@ -10,7 +10,7 @@ export interface Task {
 
 export type TaskInput = Omit<
   Task,
-  'id' | 'completed' | 'createdAt' | 'updatedAt'
+  "id" | "completed" | "createdAt" | "updatedAt"
 >;
-export type TaskUpdate = Partial<Omit<Task, 'id' | 'createdAt' | 'updatedAt'>>;
-export type TaskFilter = 'ALL' | 'COMPLETED' | 'PENDING';
+export type TaskUpdate = Partial<Omit<Task, "id" | "createdAt" | "updatedAt">>;
+export type TaskFilter = "ALL" | "COMPLETED" | "PENDING";

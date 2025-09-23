@@ -1,19 +1,19 @@
-import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
-import { immer } from 'zustand/middleware/immer';
-import { createTaskSlice } from './slices/task';
-import type { AppStore } from './types';
+import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
+import { createTaskSlice } from "./slices/task";
+import type { AppStore } from "./types";
 
-export type { Task, TaskInput, TaskUpdate, TaskFilter } from '@/types/task';
+export type { Task, TaskInput, TaskUpdate, TaskFilter } from "@/types/task";
 
-import { StoreApi, UseBoundStore } from 'zustand';
+import { StoreApi, UseBoundStore } from "zustand";
 
 type WithSelectors<S> = S extends { getState: () => infer T }
   ? S & { use: { [K in keyof T]: () => T[K] } }
   : never;
 
 const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
-  _store: S,
+  _store: S
 ) => {
   const store = _store as WithSelectors<typeof _store>;
   store.use = {};
@@ -29,7 +29,7 @@ export const useAppStoreBase = create<AppStore>()(
     persist(
       immer((set, get, store) => ({
         count: 1,
-        appVersion: '1.0.0',
+        appVersion: "1.0.0",
         lastSync: null,
         isOnline: true,
         // Combine all slices
@@ -47,7 +47,7 @@ export const useAppStoreBase = create<AppStore>()(
           }),
       })),
       {
-        name: 'app-storage',
+        name: "app-storage",
         partialize: (state) => ({
           // Only persist certain parts
           tasks: state.tasks,
@@ -76,10 +76,10 @@ export const useAppStoreBase = create<AppStore>()(
             localStorage.removeItem(name);
           },
         },
-      },
+      }
     ),
-    { name: 'app-store' },
-  ),
+    { name: "app-store" }
+  )
 );
 
 export const useAppStore = createSelectors(useAppStoreBase);

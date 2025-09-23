@@ -1,4 +1,4 @@
-import type { TaskSlice } from './slices/task';
+import type { TaskSlice } from "./slices/task";
 
 export type AppStore = TaskSlice & {
   count: number;

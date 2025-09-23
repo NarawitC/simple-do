@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { siX, siGithub } from 'simple-icons';
-import { SimpleIcon } from '@/components/custom/simple-icon';
+import Link from "next/link";
+import { siX, siGithub } from "simple-icons";
+import { SimpleIcon } from "@/components/custom/simple-icon";
 
 export function Footer() {
   return (

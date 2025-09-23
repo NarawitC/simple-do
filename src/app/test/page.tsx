@@ -1,9 +1,9 @@
-'use client';
-import { Card, CardContent } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { useAppStore } from '@/store';
-import { AddTaskSheet } from '@/components/custom/add-task-sheet';
+"use client";
+import { Card, CardContent } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { useAppStore } from "@/store";
+import { AddTaskSheet } from "@/components/custom/add-task-sheet";
 
 export default function Test() {
   const tasks = useAppStore.use.tasks();

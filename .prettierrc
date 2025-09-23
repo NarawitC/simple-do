@@ -4,9 +4,9 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "quoteProps": "as-needed",
-  "trailingComma": "all",
+  "trailingComma": "es5",
   "jsxSingleQuote": false,
   "bracketSpacing": true,
   "bracketSameLine": false
