@@ -1,14 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
+
+import { AddTaskSheet } from "@/components/custom/add-task-sheet";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useAppStore } from "@/store";
-import { AddTaskSheet } from "@/components/custom/add-task-sheet";
 
 export default function Test() {
   const tasks = useAppStore.use.tasks();
   const toggleTaskCompletion = useAppStore.use.toggleTaskCompletion();
-
+  const router = useRouter();
   return (
     <div className="container mx-auto">
       <AddTaskSheet />
@@ -18,7 +20,10 @@ export default function Test() {
         .map((task) => (
           <Card key={task.id} className="border-2">
             <CardContent className="flex flex-row justify-between">
-              <div>
+              <div
+                onClick={() => router.push(`/task/${task.id}`)}
+                className="cursor-pointer"
+              >
                 <div>Id: {task.id}</div>
                 <div>Title: {task.title}</div>
                 <div>Description: {task.description}</div>

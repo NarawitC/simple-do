@@ -2,6 +2,7 @@
 
 import { format } from "date-fns";
 import { Clock, Calendar, Search } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -26,9 +27,11 @@ import type { Task } from "@/store";
 export function SearchModal() {
   const [open, setOpen] = useState(false);
   const tasks = useAppStore.use.tasks();
+  const router = useRouter();
 
   const handleSelect = (taskId: string) => {
     setOpen(false);
+    router.push(`/task/${taskId}`);
   };
 
   useEffect(() => {

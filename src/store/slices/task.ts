@@ -1,5 +1,7 @@
 import { StateCreator } from "zustand";
+
 import { Task, TaskInput, TaskUpdate } from "@/types/task";
+
 import type { AppStore } from "../types";
 
 const generateId = (): string => {
